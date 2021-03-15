@@ -1,16 +1,55 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  width: 100%
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.App-bg{
+  width: 100%;
+  position: relative;
+}
+
+.App-bg-img{
+  width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.App-wx-img{
+  width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 300;
+}
+
+
+.bg-ele1{
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.p-app-name{
+  margin: 12px;
+  color: white;
+  font-size: larger;
+  font-weight: bold;
+}
+
+.App-bg-icon{
+  position: absolute;
+  top: 28px;
+  left: 28px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .App-header {
@@ -22,6 +61,26 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.App-phone{
+  z-index: 100;
+  margin-top: 100px;
+  margin-bottom: 24px;
+}
+
+.App-download{
+  background-image: linear-gradient(to right, #FF8126 , #FF117E);
+  color: white;
+  margin: 24px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  border-radius: 100px;
+  border-width: 0;
+  z-index: 100;
+}
+.App-wx-tips{
+  z-index: 200;
 }
 
 .App-link {
