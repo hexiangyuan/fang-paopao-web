@@ -39,10 +39,10 @@ function App() {
 
   function downloadApp () {
    const isIOS =  checkIsIOS()
-    if(!isIOS){
+    if(isIOS){
       alert("亲爱的苹果用户，我们暂时不支持苹果 app 的下载。请您用安卓手机更进行体验。")
     }else{
-      window.location.href = "https://cdn-ll.qindazheng.com/xs/android/new/xiuse-20210127-v2.30-e1267ac32931a1e9b10733e2ed601247.apk"
+      window.location.href = "https://gitee.com/yangmeimei123/fang-paopao-web/raw/main/app-release.apk"
     }
   }
 
