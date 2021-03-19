@@ -42,7 +42,7 @@ function App() {
     if(isIOS){
       alert("亲爱的苹果用户，我们暂时不支持苹果 app 的下载。请您用安卓手机更进行体验。")
     }else{
-      window.location.href = "https://gitee.com/yangmeimei123/fang-paopao-web/raw/main/app-release.apk"
+      window.location.href = "https://fanghe.oss-cn-beijing.aliyuncs.com/fangpaopao-android.f10a701e.apk"
     }
   }
 
