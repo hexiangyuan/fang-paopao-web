@@ -4,6 +4,34 @@
   flex-direction: column;
 }
 
+.div-code{
+  width: 80%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin-left: 10%;
+  margin-top: 16px;
+}
+
+.code-input{
+  flex: 1;
+  margin-right: 16px;
+  border-width: 1px;
+  border-color: #FF117E;
+  border-radius: 4px;
+  padding: 12px;
+
+}
+
+.input-mobile{
+  border-width: 1px;
+  border-color: #FF117E;
+  border-radius: 4px;
+  margin-left: 10%;
+  margin-right: 10%;
+  padding: 12px;
+}
+
 .App-logo {
   width: 100%
 }
@@ -69,10 +97,39 @@
   margin-bottom: 24px;
 }
 
+.content{
+  z-index: 200;
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-top: 75%;
+}
+
+.btn-get-code{
+  background-image: linear-gradient(to right, #FF8126 , #ff117e);
+  color: white;
+  border-radius: 100px;
+  border-width: 0;
+  padding: 4px 16px;
+}
+
+
+.btn-get-code:disabled{
+  background: #ccc;
+}
+
+.App-download:disabled{
+  background: #ccc;
+}
+
+
 .App-download{
   background-image: linear-gradient(to right, #FF8126 , #FF117E);
   color: white;
-  margin: 24px;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 16px;
   padding-top: 16px;
   padding-bottom: 16px;
   border-radius: 100px;
