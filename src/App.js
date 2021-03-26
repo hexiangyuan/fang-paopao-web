@@ -31,9 +31,9 @@ function getData(url) {
 }
 
 
-const loginPath = "/login/mobile"
+const loginPath = "/api/login/mobile"
 
-const getCodePath = "/common/verification-code"
+const getCodePath = "/api/common/verification-code"
 
 function App(props) {
 

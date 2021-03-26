@@ -9,7 +9,7 @@ ReactDOM.render(
     <Router>
       <div>
         <Switch>
-      <Route path="/:code">
+      <Route path="/">
         <App></App>
       </Route>
         </Switch>
