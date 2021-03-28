@@ -3,6 +3,7 @@ import ele1 from './assets/section1-element.png';
 import phoneMain from './assets/section-1-main.png';
 import wxBg from './assets/wx-tips.png';
 import icon from './assets/app-icon.png';
+import wxQrcode from './assets/wx_qr_img.png';
 import './App.css';
 import {useEffect, useState,useCallback} from "react";
 import {useLocation, useParams } from "react-router-dom";
@@ -45,6 +46,7 @@ function App(props) {
   const [captcha, setCaptcha] = useState("");
   const [timing, setTiming] = useState(false)
   const [count,setCount] = useState(30000);
+  const [isIOS,setIsIos] = useState(false);
 
   const fetchCode = useCallback(()=>{
     if(username&&username.length === 11){
@@ -93,6 +95,7 @@ function App(props) {
   useEffect(()=>{
     const isWeiXin = navigator.userAgent.toLowerCase().indexOf('micromessenger') > -1 ? true : false
     setIsWx(isWeiXin)
+    setIsIos(checkIsIOS())
   },[])
 
   function checkIsIOS () {
@@ -140,44 +143,49 @@ function App(props) {
           <img src={icon} height={72} width={72}/>
           <p className="p-app-name">方泡泡</p>
         </div>
-        {isWx && <img src={wxBg} className="App-wx-img"/>}
+        {isWx && !isIOS && <img src={wxBg} className="App-wx-img"/>}
       </div>
       {/*<div className="App-phone">*/}
       {/*  <img src={phoneMain} width={"50%"}/>*/}
       {/*</div>*/}
-  <div className={"content"}>
-      <input
-        className={"input-mobile"}
-        type={"tel"}
-        maxLength={11}
-        placeholder="请输入手机号"
-        value={username}
-        onChange={(e) => {
-          setUsername(e.target.value);
-        }}
-      />
-      <div className={"div-code"}>
-      <input
-        className={"code-input"}
-        placeholder="请输入验证码"
-        value={captcha}
-        onChange={(e) => {
-          setCaptcha(e.target.value);
-        }}
-      />
-      <button className={"btn-get-code"} disabled={timing} onClick={getCode}>
-        {timing ?  count/1000 +" S": '获取验证码'}
-      </button>
+      { isIOS &&(<div className="wx-qrcode-div">
+        <img src={wxQrcode} className="wx-qrcode-img"/>
+        <text className="wx-qrcode-text">请到微信扫描二维码添加好友『方泡泡』</text>
+      </div>) }
+      {!isIOS &&(<div className={"content"}>
+        <input
+          className={"input-mobile"}
+          type={"tel"}
+          maxLength={11}
+          placeholder="请输入手机号"
+          value={username}
+          onChange={(e) => {
+            setUsername(e.target.value);
+          }}
+        />
+        <div className={"div-code"}>
+          <input
+            className={"code-input"}
+            placeholder="请输入验证码"
+            value={captcha}
+            onChange={(e) => {
+              setCaptcha(e.target.value);
+            }}
+          />
+          <button className={"btn-get-code"} disabled={timing} onClick={getCode}>
+            {timing ? count / 1000 + " S" : '获取验证码'}
+          </button>
 
-      </div>
+        </div>
 
-      <button className="App-download"
-              disabled={!username || !captcha}
-              type={"submit"}
-     onClick={downloadApp}
+        <button className="App-download"
+                disabled={!username || !captcha}
+                type={"submit"}
+                onClick={downloadApp}
 
-      >立即下载</button>
-    </div>
+        >立即下载
+        </button>
+      </div>)}
     </div>
   );
 }
