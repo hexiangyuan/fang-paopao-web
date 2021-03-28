@@ -66,7 +66,7 @@ function App(props) {
     postData(loginPath,{
       mobile:username,
       verificationCode:captcha,
-      invitedCode:code?code:""
+      inviteCode:code?code:""
     }).then(data=>{
 
     }).catch(error=>{
