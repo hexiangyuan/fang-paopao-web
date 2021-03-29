@@ -1,0 +1,50 @@
+
+.AppIconDiv{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 15vw;
+}
+
+.AppIconImage{
+    width: 5vw;
+    height: 5vw;
+}
+
+.AppIconText {
+    color: white;
+    font-size: 5vw;
+    text-align: center;
+    margin-left: 2vw;
+}
+
+
+.Header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    background: #282c34;
+}
+
+.SloganTitle{
+    display: flex;
+    flex-direction: column;
+    margin-top: 6vw;
+}
+
+.SloganTitle{
+    color: white;
+    font-size: 6vw;
+    font-weight: bold;
+}
+
+.SloganSubTitle{
+    color: white;
+    font-size: 4vw;
+}
+
+.commonText{
+    color: white;
+    font-size: 1.6vw;
+}
