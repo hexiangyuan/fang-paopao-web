@@ -1,4 +1,3 @@
-import headerBg from "../assets/bg.jpg"
 import app_icon from "../assets/app-icon.png"
 import icon_nb from "../assets/ic_nb.png"
 import mobileExample from "../assets/example_mobile.png"
@@ -79,7 +78,7 @@ function Body2(props){
       fontSize:"1.2vw",
       marginLeft:"10vw",
       marginRight:"10vw",
-      lineHeight:"2vw"
+      lineHeight:"2.4vw"
     }}>方泡泡是上海方和信息科技有限公司旗下运营品牌，2020年创办于上海，是中国领先的互联网美业科技公司。
       本着对中国互联网美容新型模式发展的强烈使命感，创新打造美业“第三空间”，方泡泡充分利用移动互联网和大数据技术的“新服务”模式，开拓集互联网智能门店运营、职业培训、化妆品研发、销售为一体的O2O美业服务平台，拓展美业产业链，构建新型美业生态圈，实现“360度运营场景”。发展至今，方泡泡精益求精，致力成为一流的互联网+健康生活体验服务商。</text>
   </div>)

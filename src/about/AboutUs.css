@@ -42,9 +42,80 @@
 .SloganSubTitle{
     color: white;
     font-size: 4vw;
+    text-align: center;
 }
 
 .commonText{
     color: white;
     font-size: 1.6vw;
 }
+.input-mobile{
+    border-width: 1px;
+    border-color: #FF117E;
+    border-radius: 4px;
+    padding: 12px;
+    margin-left: 10vw;
+    margin-right: 10vw;
+}
+
+.input-verification{
+    border-width: 1px;
+    flex:1;
+    border-color: #FF117E;
+    border-radius: 4px;
+    margin-right: 10%;
+    padding: 12px;
+}
+
+.btn-get-code{
+    background-image: linear-gradient(to right, #FF8126 , #ff117e);
+    color: white;
+    border-radius: 100px;
+    border-width: 0;
+    padding: 1.5vw 2vw;
+    font-size: 15px;
+    min-width: 20vw;
+}
+.App-download{
+    background-image: linear-gradient(to right, #FF8126 , #ff117e);
+    color: white;
+    border-radius: 100px;
+    padding-top: 2vw;
+    padding-bottom: 2vw;
+    border-width: 0;
+    font-size: 15px;
+    margin-left: 10vw;
+    margin-right: 10vw;
+}
+
+.App-wx-img{
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 300;
+}
+
+
+.wx-qrcode-div{
+    z-index: 500;
+    width: 100%;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.wx-qrcode-text{
+    font-size: 16pt;
+    font-weight: bold;
+    margin:16px ;
+    color: white;
+    text-align: center;
+}
+
+.wx-qrcode-img{
+    width: 50%;
+    height: 50%;
+}
+
+
