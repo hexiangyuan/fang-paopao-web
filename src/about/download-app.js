@@ -1,7 +1,7 @@
 import app_icon from "../assets/app-icon.png"
 import icon_nb from "../assets/ic_nb.png"
 import './AboutUs.css';
-import {useLocation, useParams} from "react-router-dom";
+import {useLocation} from "react-router-dom";
 import {useEffect, useState,useCallback} from "react";
 
 import queryString from 'query-string'
