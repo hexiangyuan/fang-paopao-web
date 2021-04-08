@@ -3,6 +3,7 @@ import app_icon from '../assets/app-icon.png'
 import icon_nb from '../assets/ic_nb.png'
 import mobileExample from '../assets/example_mobile.png'
 import './AboutUs.css'
+import {IcpInfo} from "./download-app";
 
 function AppIcon(props) {
   return (
@@ -74,7 +75,7 @@ function Body2(props) {
     }}
     >
       <text style={{
-        color: '#333',
+        color: 'white',
         fontSize: '5vw',
         fontWeight: 'bold',
         marginTop: '8vw',
@@ -83,7 +84,7 @@ function Body2(props) {
       </text>
 
       <text style={{
-        color: '#333',
+        color: 'white',
         fontSize: '1.2vw',
         marginLeft: '10vw',
         marginRight: '10vw',
@@ -115,7 +116,7 @@ function AboutUs(props) {
     <div>
       <Body />
       <Body2 />
-      <Bottom />
+      <IcpInfo />
     </div>
   )
 }

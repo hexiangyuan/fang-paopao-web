@@ -72,7 +72,7 @@ function Icon(props) {
   )
 }
 
-function IcpInfo(props) {
+export function IcpInfo(props) {
   return (
     <div style={{
       flexDirection: 'column', display: 'flex', alignItems: 'center', width: '100%', marginTop: '50vw', marginBottom: '5vw',
