@@ -79,6 +79,14 @@ function Icon(props){
   )
 }
 
+function IcpInfo(props){
+  return(
+    <div style={{flexDirection:'column',display:"flex",alignItems:"center",width:'100%',marginTop:"50vw",marginBottom:'5vw'}}>
+        <text style={{color:"white",fontSize:12}}>上海方和信息技术有限公司</text>
+        <a href={"https://beian.miit.gov.cn/"} target={"_blank"} style={{color:"white",fontSize:12}}>沪ICP备2021010013号</a>
+    </div>
+  )
+}
 
 function Slogan(props){
   return (
@@ -146,9 +154,14 @@ function DownloadApp(props){
     }).then(data=>{
       if(data.code === 200){
         setHasLogin(true)
+        if(!isIOS){
+          window.location.href = "https://fanghe.oss-cn-beijing.aliyuncs.com/fangpaopao-android.f10a701e.apk"
+        }
+      }else{
+        alert("验证码获取失败，请重新获取再试。")
       }
     }).catch(error=>{
-
+      alert("验证码获取失败，请重新获取再试。")
     })
 
   },[username,captcha,location])
@@ -179,12 +192,10 @@ function DownloadApp(props){
 
 
   function downloadApp () {
-    const isIOS = checkIsIOS()
-    login()
-    if(isIOS){
-      alert("亲爱的苹果用户，我们暂时不支持苹果 app 的下载。请您用安卓手机更进行体验。")
-    }else{
+    if(hasLogin){
       window.location.href = "https://fanghe.oss-cn-beijing.aliyuncs.com/fangpaopao-android.f10a701e.apk"
+    }else{
+      login()
     }
   }
 
@@ -200,6 +211,7 @@ function DownloadApp(props){
       flex:1,
       display:"flex",
       flexDirection:"column"}}>
+      <div>
       {isWx && !isIOS &&(
         <div>
          <img src={wxBg} className="App-wx-img"/>}
@@ -208,12 +220,6 @@ function DownloadApp(props){
 
       <Body/>
       {
-        isIOS?(
-          <div style={{display:"flex",flexDirection:"column",alignItems:"center",marginTop:"5vw"}}>
-            <img src={wxQrcode} className="wx-qrcode-img"/>
-            <text className="wx-qrcode-text">请添加客服微信预约体验，iOS版将于近期上线APP Store</text>
-          </div>
-        ):(
           <div style={{width:"100%",
             display:"flex",
             flexDirection:"column"}}>
@@ -222,7 +228,7 @@ function DownloadApp(props){
             (
             <div style={{display:"flex",flexDirection:"column",alignItems:"center",marginTop:"5vw"}}>
               <img src={wxQrcode} className="wx-qrcode-img"/>
-              <text className="wx-qrcode-text">扫码添加微信公众号</text>
+              <text className="wx-qrcode-text">{isIOS?"关注微信公众号找客服预约体验，iOS版APP将于近期上线APP Store":"记得关注微信公众号联系我们哦"}</text>
             </div>):
             (<div style={{display:"flex",flexDirection:"column",justifyContent:"center"}}>
               <input
@@ -266,15 +272,22 @@ function DownloadApp(props){
 
             <div style={{marginTop:'8vw'}}/>
 
-            <button className="App-download"
-                    onClick={downloadApp}
-                    disabled={!downloadEnable()}
-                    type={"submit"}
-            >立即下载
-            </button>
+            {isIOS?(hasLogin?<div/>:<button className="App-download"
+                            onClick={downloadApp}
+                            disabled={!downloadEnable()}
+                            type={"submit"}
+              >立即体验</button>)
+              :(<button className="App-download"
+                     onClick={downloadApp}
+                     disabled={!downloadEnable()}
+                     type={"submit"}
+            >{isIOS ? "立即体验" : "立即下载"}
+            </button>) }
           </div>
-        )
       }
+      </div>
+      <IcpInfo/>
+
     </div>
   );
 }
