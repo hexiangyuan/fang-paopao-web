@@ -8,9 +8,9 @@ import queryString from 'query-string'
 import wxBg from "../assets/wx-tips.png";
 import wxQrcode from "../assets/wx_qr_img.png";
 
-const loginPath = "/login/mobile"
+const loginPath = "/api/login/mobile"
 
-const getCodePath = "/common/verification-code"
+const getCodePath = "/api/common/verification-code"
 
 function postData(url, data) {
   // Default options are marked with *
@@ -118,6 +118,7 @@ function DownloadApp(props){
   const [timing, setTiming] = useState(false)
   const [count,setCount] = useState(30000);
   const [isIOS,setIsIos] = useState(false);
+  const [hasLogin,setHasLogin] = useState(false)
 
   const fetchCode = useCallback(()=>{
     if(username&&username.length === 11){
@@ -130,6 +131,10 @@ function DownloadApp(props){
       alert("请输入正确的手机号")
     }
 
+  },[username])
+
+  const downloadEnable = useCallback(()=>{
+    return username.length === 11&&captcha.length ===4
   },[username,captcha])
 
   const login = useCallback(()=>{
@@ -139,7 +144,9 @@ function DownloadApp(props){
       verificationCode:captcha,
       inviteCode:code?code:""
     }).then(data=>{
-
+      if(data.code === 200){
+        setHasLogin(true)
+      }
     }).catch(error=>{
 
     })
@@ -211,7 +218,13 @@ function DownloadApp(props){
             display:"flex",
             flexDirection:"column"}}>
             <div style={{marginTop:'5vw'}}/>
-            <div style={{display:"flex",flexDirection:"column",justifyContent:"center"}}>
+            { hasLogin ?
+            (
+            <div style={{display:"flex",flexDirection:"column",alignItems:"center",marginTop:"5vw"}}>
+              <img src={wxQrcode} className="wx-qrcode-img"/>
+              <text className="wx-qrcode-text">扫码添加微信公众号</text>
+            </div>):
+            (<div style={{display:"flex",flexDirection:"column",justifyContent:"center"}}>
               <input
                 className={"input-mobile"}
                 type={"tel"}
@@ -249,12 +262,13 @@ function DownloadApp(props){
 
               </div>
 
-            </div>
+            </div>)}
 
             <div style={{marginTop:'8vw'}}/>
 
             <button className="App-download"
                     onClick={downloadApp}
+                    disabled={!downloadEnable()}
                     type={"submit"}
             >立即下载
             </button>
