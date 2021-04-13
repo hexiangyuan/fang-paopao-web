@@ -7,6 +7,7 @@ import { useEffect, useState, useCallback } from 'react'
 import queryString from 'query-string'
 import wxBg from '../assets/wx-tips.png'
 import wxQrcode from '../assets/wx_qr_img.png'
+import appStoreDownload from '../assets/apple-store-download.png'
 
 const loginPath = '/api/login/mobile'
 
@@ -148,6 +149,7 @@ function DownloadApp(props) {
       mobile: username,
       verificationCode: captcha,
       inviteCode: code || '',
+      inviteType:1
     }).then((data) => {
       if (data.code === 200) {
         setHasLogin(true)
@@ -155,10 +157,10 @@ function DownloadApp(props) {
           window.location.href = 'https://fanghe.oss-cn-beijing.aliyuncs.com/fangpaopao-android.f10a701e.apk'
         }
       } else {
-        alert('验证码获取失败，请重新获取再试。')
+        alert('验证码验证失败，请重新获取再试。')
       }
     }).catch((error) => {
-      alert('验证码获取失败，请重新获取再试。')
+      alert('验证码验证失败，请重新获取再试。')
     })
   }, [username, captcha, location])
 
@@ -228,8 +230,12 @@ function DownloadApp(props) {
                 display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '5vw',
               }}
               >
+                <a href='https://apps.apple.com/cn/app/%E6%96%B9%E6%B3%A1%E6%B3%A1/id1560592820' >
+                  <img src={appStoreDownload} />
+                </a>
+                <div style={{height:"10vw"}}/>
                 <img src={wxQrcode} className="wx-qrcode-img" />
-                <text className="wx-qrcode-text">{isIOS ? '关注微信公众号找客服预约体验，iOS版APP将于近期上线APP Store' : '记得关注微信公众号联系我们哦'}</text>
+                <text className="wx-qrcode-text">{'记得关注微信公众号联系我们哦'}</text>
               </div>
             )
             : (

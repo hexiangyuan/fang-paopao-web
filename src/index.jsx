@@ -4,6 +4,7 @@ import './index.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AboutUs from "./about/AboutUs";
 import DownloadApp from "./about/download-app";
+import PrivacyAgreement from "./about/PrivacyAgreement";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -13,6 +14,7 @@ ReactDOM.render(
           <Route exact path="/" component={DownloadApp}/>
           <Route exact path="/app" component={AboutUs}/>
           <Route exact path="/download" component={DownloadApp}/>
+          <Route exact path="/privacy-agreement" component={PrivacyAgreement}/>
         </Switch>
       </div>
     </Router>

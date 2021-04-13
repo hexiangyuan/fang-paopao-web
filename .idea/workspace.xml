@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9294975a-a525-4524-b1d4-ac3038f9f780" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/about/PrivacyAgreement.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/apple-store-download.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/about/AboutUs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/about/AboutUs.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/about/download-app.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/about/download-app.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,9 +16,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
         <option value="TypeScript File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -35,7 +37,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -50,8 +52,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/assets" />
+      <recent name="$PROJECT_DIR$/src/about" />
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/public" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -87,7 +90,10 @@
       <workItem from="1617672490776" duration="6030000" />
       <workItem from="1617845670363" duration="4232000" />
       <workItem from="1617852702190" duration="5343000" />
-      <workItem from="1617860396034" duration="2587000" />
+      <workItem from="1617860396034" duration="3683000" />
+      <workItem from="1617874617440" duration="2048000" />
+      <workItem from="1617934548336" duration="1268000" />
+      <workItem from="1618308598711" duration="705000" />
     </task>
     <servers />
   </component>
