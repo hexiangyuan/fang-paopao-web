@@ -144,12 +144,12 @@ function DownloadApp(props) {
   const downloadEnable = useCallback(() => username.length === 11 && captcha.length === 4, [username, captcha])
 
   const login = useCallback(() => {
-    const { code } = queryString.parse(location.search)
+    const { code,type } = queryString.parse(location.search)
     postData(loginPath, {
       mobile: username,
       verificationCode: captcha,
       inviteCode: code || '',
-      inviteType:1
+      inviteType:type?type:1
     }).then((data) => {
       if (data.code === 200) {
         setHasLogin(true)
@@ -235,7 +235,7 @@ function DownloadApp(props) {
                 </a>
                 <div style={{height:"10vw"}}/>
                 <img src={wxQrcode} className="wx-qrcode-img" />
-                <text className="wx-qrcode-text">{'记得关注微信公众号联系我们哦'}</text>
+                <text className="wx-qrcode-text">{'记得关注微信公众号「方泡泡」联系我们哦'}</text>
               </div>
             )
             : (
@@ -291,7 +291,7 @@ function DownloadApp(props) {
               onClick={downloadApp}
               disabled={!downloadEnable()}
               type="submit"
-            >立即体验
+            >关注公众号/下载APP
             </button>
           ))
             : (
@@ -300,7 +300,7 @@ function DownloadApp(props) {
                 onClick={downloadApp}
                 disabled={!downloadEnable()}
                 type="submit"
-              >{isIOS ? '立即体验' : '立即下载'}
+              >关注公众号/下载APP
               </button>
             ) }
         </div>

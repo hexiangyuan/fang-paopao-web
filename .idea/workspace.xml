@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9294975a-a525-4524-b1d4-ac3038f9f780" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/about/PrivacyAgreement.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/apple-store-download.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/about/download-app.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/about/download-app.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +90,9 @@
       <workItem from="1617860396034" duration="3683000" />
       <workItem from="1617874617440" duration="2048000" />
       <workItem from="1617934548336" duration="1268000" />
-      <workItem from="1618308598711" duration="705000" />
+      <workItem from="1618308598711" duration="1516000" />
+      <workItem from="1618365000685" duration="1507000" />
+      <workItem from="1618817900337" duration="579000" />
     </task>
     <servers />
   </component>
