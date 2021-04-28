@@ -9,15 +9,18 @@
     "@testing-library/user-event": "^12.1.10",
     "antd": "^4.13.1",
     "http-proxy-middleware": "^1.0.6",
+    "node-sass": "^5.0.0",
     "query-string": "^7.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "swiper": "^6.5.8",
     "web-vitals": "^1.0.1"
   },
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
     "eslint": "^7.13.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^6.0.0",
@@ -31,8 +34,7 @@
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-standard": "^4.0.0",
-    "prettier": "^2.0.4",
-    "babel-eslint": "^10.1.0"
+    "prettier": "^2.0.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -52,6 +54,5 @@
       "last 1 safari version"
     ]
   },
-
   "proxy": "https://fangpaopao.cn"
 }

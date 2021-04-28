@@ -123,4 +123,11 @@
     height: 50%;
 }
 
+  body, html, .wrap, .swiper-container,.swiper-slide {
+      width: 100vw;
+      height: auto;
+  }
+
+
+
 

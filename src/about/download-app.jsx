@@ -1,6 +1,5 @@
 import app_icon from '../assets/app-icon.png'
 import icon_nb from '../assets/ic_nb.png'
-import './AboutUs.css'
 import { useLocation } from 'react-router-dom'
 import { useEffect, useState, useCallback } from 'react'
 
@@ -8,6 +7,21 @@ import queryString from 'query-string'
 import wxBg from '../assets/wx-tips.png'
 import wxQrcode from '../assets/wx_qr_img.png'
 import appStoreDownload from '../assets/apple-store-download.png'
+import img1 from '../assets/img5_01.jpg'
+import img2 from '../assets/img5_02.jpg'
+import img3 from '../assets/img5_03.jpg'
+import img4 from '../assets/img5_04.jpg'
+import img5 from '../assets/img5_05.jpg'
+import img6 from '../assets/img5_06.jpg'
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+
+
+// Import Swiper styles
+import 'swiper/swiper.scss';
+import './AboutUs.css'
+
 
 const loginPath = '/api/login/mobile'
 
@@ -51,6 +65,12 @@ function checkIsIOS() {
   return false
 }
 
+const IntroImg = (props) =>{
+  return(<div style={{alignItems:"center",display:"flex",justifyContent:"center",width:'100%',height:"100%"}}>
+    <img src={props.src} style={{width:'100%'}}/>
+  </div>)
+}
+
 function AppIcon(props) {
   return (
     <div className="AppIconDiv">
@@ -76,9 +96,12 @@ function Icon(props) {
 export function IcpInfo(props) {
   return (
     <div style={{
-      flexDirection: 'column', display: 'flex', alignItems: 'center', width: '100%', marginTop: '50vw', marginBottom: '5vw',
+      flexDirection: 'column', display: 'flex', alignItems: 'center', width: '100%',position:"absolute", bottom:0, marginBottom: '5vw',
     }}
     >
+
+      <text style={{color:"white",fontSize:20,marginBottom:20}}>上滑了解更多</text>
+
       <text style={{ color: 'white', fontSize: 12 }}>上海方和信息技术有限公司</text>
       <a href="https://beian.miit.gov.cn/" target="_blank" style={{ color: 'white', fontSize: 12 }}>沪ICP备2021010013号</a>
     </div>
@@ -200,92 +223,90 @@ function DownloadApp(props) {
     fetchCode()
   }
 
-  return (
-    <div style={{
-      backgroundColor: '#282c34',
-      height: '100%',
-      flex: 1,
-      display: 'flex',
-      flexDirection: 'column',
-    }}
-    >
-      <div>
-        {isWx && !isIOS && (
+  const swiper1 =  <div style={{
+    height: '100%',
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
+  }}
+  >
+    <div>
+      {isWx && !isIOS && (
         <div>
           <img src={wxBg} className="App-wx-img" />}
         </div>
-        )}
+      )}
 
-        <Body />
-        <div style={{
-          width: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-        }}
-        >
-          <div style={{ marginTop: '5vw' }} />
-          { hasLogin
-            ? (
+      <Body />
+      <div style={{
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+      >
+        <div style={{ marginTop: '5vw' }} />
+        { hasLogin
+          ? (
+            <div style={{
+              display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '5vw',
+            }}
+            >
+              <a href='https://apps.apple.com/cn/app/%E6%96%B9%E6%B3%A1%E6%B3%A1/id1560592820' >
+                <img src={appStoreDownload} />
+              </a>
+              <div style={{height:"10vw"}}/>
+              <img src={wxQrcode} className="wx-qrcode-img" />
+              <text className="wx-qrcode-text">{'记得关注微信公众号「方泡泡」联系我们哦'}</text>
+            </div>
+          )
+          : (
+            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+              <input
+                className="input-mobile"
+                type="tel"
+                maxLength={11}
+                placeholder="请输入手机号"
+                value={username}
+                onChange={(e) => {
+                  setUsername(e.target.value)
+                }}
+              />
+
               <div style={{
-                display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '5vw',
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
+                marginTop: '3vw',
+                marginLeft: '10%',
+                marginRight: '10%',
               }}
               >
-                <a href='https://apps.apple.com/cn/app/%E6%96%B9%E6%B3%A1%E6%B3%A1/id1560592820' >
-                  <img src={appStoreDownload} />
-                </a>
-                <div style={{height:"10vw"}}/>
-                <img src={wxQrcode} className="wx-qrcode-img" />
-                <text className="wx-qrcode-text">{'记得关注微信公众号「方泡泡」联系我们哦'}</text>
-              </div>
-            )
-            : (
-              <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+
                 <input
-                  className="input-mobile"
-                  type="tel"
-                  maxLength={11}
-                  placeholder="请输入手机号"
-                  value={username}
+                  className="input-verification"
+                  placeholder="请输入验证码"
+                  value={captcha}
                   onChange={(e) => {
-                    setUsername(e.target.value)
+                    setCaptcha(e.target.value)
                   }}
                 />
 
-                <div style={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  marginTop: '3vw',
-                  marginLeft: '10%',
-                  marginRight: '10%',
-                }}
+                <button
+                  className="btn-get-code"
+                  disabled={timing}
+                  onClick={getCode}
                 >
-
-                  <input
-                    className="input-verification"
-                    placeholder="请输入验证码"
-                    value={captcha}
-                    onChange={(e) => {
-                      setCaptcha(e.target.value)
-                    }}
-                  />
-
-                  <button
-                    className="btn-get-code"
-                    disabled={timing}
-                    onClick={getCode}
-                  >
-                    {timing ? `${count / 1000} S` : '验证码'}
-                  </button>
-
-                </div>
+                  {timing ? `${count / 1000} S` : '验证码'}
+                </button>
 
               </div>
-            )}
 
-          <div style={{ marginTop: '8vw' }} />
+            </div>
+          )}
 
-          {isIOS ? (hasLogin ? <div /> : (
+        <div style={{ marginTop: '8vw' }} />
+
+        {isIOS ? (hasLogin ? <div /> : (
             <button
               className="App-download"
               onClick={downloadApp}
@@ -294,22 +315,60 @@ function DownloadApp(props) {
             >关注公众号/下载APP
             </button>
           ))
-            : (
-              <button
-                className="App-download"
-                onClick={downloadApp}
-                disabled={!downloadEnable()}
-                type="submit"
-              >关注公众号/下载APP
-              </button>
-            ) }
-        </div>
+          : (
+            <button
+              className="App-download"
+              onClick={downloadApp}
+              disabled={!downloadEnable()}
+              type="submit"
+            >关注公众号/下载APP
+            </button>
+          ) }
       </div>
+    </div>
+    <IcpInfo />
+  </div>
 
-      <IcpInfo />
 
+  return (
+    <div style={{width:"100vw",height:"100vh",backgroundColor: '#282c34'}}>
+    <Swiper
+      direction={"vertical"}
+      onSlideChange={() => console.log('slide change')}
+      onSwiper={(swiper) => console.log(swiper)}
+      style={{height:"100vh"}}
+      pagination={{ el: '.swiper-pagination'}}
+  >
+  <SwiperSlide >{swiper1}</SwiperSlide>
+
+  <SwiperSlide>
+    <IntroImg src={img1}/>
+  </SwiperSlide>
+
+      <SwiperSlide>
+        <IntroImg src={img2}/>
+      </SwiperSlide>
+
+      <SwiperSlide>
+        <IntroImg src={img3}/>
+      </SwiperSlide>
+
+      <SwiperSlide>
+        <IntroImg src={img4}/>
+      </SwiperSlide>
+
+      <SwiperSlide>
+        <IntroImg src={img5}/>
+      </SwiperSlide>
+
+      <SwiperSlide>
+        <IntroImg src={img6}/>
+      </SwiperSlide>
+
+</Swiper>
     </div>
   )
 }
 
 export default DownloadApp
+
