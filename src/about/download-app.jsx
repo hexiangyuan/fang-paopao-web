@@ -14,6 +14,9 @@ import img4 from '../assets/img5_04.jpg'
 import img5 from '../assets/img5_05.jpg'
 import img6 from '../assets/img5_06.jpg'
 
+import qxXd0001 from "../assets/xd0001.jpg";
+import qxXd0018 from "../assets/xd0018.jpg";
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 
@@ -66,8 +69,12 @@ function checkIsIOS() {
 }
 
 const IntroImg = (props) =>{
-  return(<div style={{alignItems:"center",display:"flex",justifyContent:"center",width:'100%',height:"100%"}}>
-    <img src={props.src} style={{width:'100%'}}/>
+  return(<div style={{alignItems:"center",
+    display:"flex",
+    justifyContent:"center",
+    width:'100%',
+    height:"100%"}}>
+    <img src={props.src} style={{width:'100%',height:'100%'}}/>
   </div>)
 }
 
@@ -96,7 +103,12 @@ function Icon(props) {
 export function IcpInfo(props) {
   return (
     <div style={{
-      flexDirection: 'column', display: 'flex', alignItems: 'center', width: '100%',position:"absolute", bottom:0, marginBottom: '5vw',
+      flexDirection: 'column',
+      display: 'flex',
+      alignItems: 'center',
+      width: '100%',
+      marginTop:20,
+      marginBottom: 12,
     }}
     >
 
@@ -105,6 +117,19 @@ export function IcpInfo(props) {
       <text style={{ color: 'white', fontSize: 12 }}>上海方和信息技术有限公司</text>
       <a href="https://beian.miit.gov.cn/" target="_blank" style={{ color: 'white', fontSize: 12 }}>沪ICP备2021010013号</a>
     </div>
+  )
+}
+
+function EnterPriceQrCode(props){
+  console.log(props.code,"11111111")
+  if(props.code === "xd0018"){
+    return(
+      <img src={qxXd0018} width={100} height={100}/>
+    )
+  }
+
+  return(
+    <img src={qxXd0001} width={100} height={100}/>
   )
 }
 
@@ -129,7 +154,7 @@ function Body(props) {
         subTitle="在线预约APP"
       />
 
-      <div style={{ display: 'flex', flexDirection: 'row', marginTop: '3vw' }}>
+      <div style={{ display: 'flex', flexDirection: 'row', marginTop: '10px' }}>
         <Icon text="外观逼真" />
         <div style={{ width: '3vw' }} />
         <Icon text="拟人肌肤" />
@@ -151,6 +176,7 @@ function DownloadApp(props) {
   const [count, setCount] = useState(30000)
   const [isIOS, setIsIos] = useState(false)
   const [hasLogin, setHasLogin] = useState(false)
+  const [inputFocus, setInputFocus] = useState(false)
 
   const fetchCode = useCallback(() => {
     if (username && username.length === 11) {
@@ -231,7 +257,7 @@ function DownloadApp(props) {
   }}
   >
     <div>
-      {isWx && !isIOS && (
+      {isWx && inputFocus && !isIOS && (
         <div>
           <img src={wxBg} className="App-wx-img" />}
         </div>
@@ -244,11 +270,11 @@ function DownloadApp(props) {
         flexDirection: 'column',
       }}
       >
-        <div style={{ marginTop: '5vw' }} />
+        <div style={{ marginTop: '25px' }} />
         { hasLogin
           ? (
             <div style={{
-              display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '5vw',
+              display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '5vh',
             }}
             >
               <a href='https://apps.apple.com/cn/app/%E6%96%B9%E6%B3%A1%E6%B3%A1/id1560592820' >
@@ -267,6 +293,9 @@ function DownloadApp(props) {
                 maxLength={11}
                 placeholder="请输入手机号"
                 value={username}
+                onFocus={()=>{
+                  setInputFocus(true)
+                }}
                 onChange={(e) => {
                   setUsername(e.target.value)
                 }}
@@ -276,7 +305,7 @@ function DownloadApp(props) {
                 display: 'flex',
                 flexDirection: 'row',
                 alignItems: 'center',
-                marginTop: '3vw',
+                marginTop: '3vh',
                 marginLeft: '10%',
                 marginRight: '10%',
               }}
@@ -304,7 +333,7 @@ function DownloadApp(props) {
             </div>
           )}
 
-        <div style={{ marginTop: '8vw' }} />
+        <div style={{ marginTop: '8vh' }} />
 
         {isIOS ? (hasLogin ? <div /> : (
             <button
@@ -324,6 +353,17 @@ function DownloadApp(props) {
             >关注公众号/下载APP
             </button>
           ) }
+
+          <div style={{width:"100%",
+            display:"flex",
+            justifyContent:"center",
+            alignItems:"center",
+            flexDirection:"column",
+            marginTop:15}}>
+          <EnterPriceQrCode
+            code={queryString.parse(location.search).code}/>
+            <text style={{marginTop:5,color:"white"}}>扫码添加客服企业微信</text>
+          </div>
       </div>
     </div>
     <IcpInfo />
