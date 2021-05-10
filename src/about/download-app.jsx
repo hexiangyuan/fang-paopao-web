@@ -16,8 +16,11 @@ import img6 from '../assets/img5_06.jpg'
 
 import qxXd0001 from "../assets/xd0001.jpg";
 import qxXd0018 from "../assets/xd0018.jpg";
+import qxXd0000 from "../assets/xd0000.jpg";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
+
+import 'animate.css';
 
 
 
@@ -68,13 +71,15 @@ function checkIsIOS() {
   return false
 }
 
-const IntroImg = (props) =>{
-  return(<div style={{alignItems:"center",
-    display:"flex",
-    justifyContent:"center",
-    width:'100%',
-    height:"100%"}}>
-    <img src={props.src} style={{width:'100%',height:'100%'}}/>
+const IntroImg = (props) => {
+  return (<div style={{
+    alignItems: "center",
+    display: "flex",
+    justifyContent: "center",
+    width: '100%',
+    height: "100%"
+  }}>
+    <img src={props.src} style={{ width: '100%', height: '100%' }} />
   </div>)
 }
 
@@ -107,30 +112,32 @@ export function IcpInfo(props) {
       display: 'flex',
       alignItems: 'center',
       width: '100%',
-      marginTop:20,
-      marginBottom: 12,
+      marginTop: 48,
+      paddingBottom: 12,
     }}
     >
-
-      <text style={{color:"white",fontSize:20,marginBottom:20}}>上滑了解更多</text>
-
       <text style={{ color: 'white', fontSize: 12 }}>上海方和信息技术有限公司</text>
       <a href="https://beian.miit.gov.cn/" target="_blank" style={{ color: 'white', fontSize: 12 }}>沪ICP备2021010013号</a>
     </div>
   )
 }
 
-function EnterPriceQrCode(props){
-  console.log(props.code,"11111111")
-  if(props.code === "xd0018"){
-    return(
-      <img src={qxXd0018} width={100} height={100}/>
-    )
-  }
+function EnterPriceQrCode(props) {
+  switch (props.code) {
+    case "xd0018":
 
-  return(
-    <img src={qxXd0001} width={100} height={100}/>
-  )
+      return (
+        <img src={qxXd0018} width={100} height={100} />
+      )
+    case "xd0001":
+      return (
+        <img src={qxXd0001} width={100} height={100} />
+      )
+    default:
+      return (
+        <img src={qxXd0000} width={100} height={100} />
+      )
+  }
 }
 
 function Slogan(props) {
@@ -150,16 +157,18 @@ function Body(props) {
     <div className="Header">
       <AppIcon />
       <Slogan
-        title="高端智能  硅胶娃娃"
-        subTitle="在线预约APP"
+        title="成人情趣  实体娃娃"
+        subTitle="APP在线预约立减80"
       />
 
-      <div style={{ display: 'flex', flexDirection: 'row', marginTop: '10px' }}>
-        <Icon text="外观逼真" />
+      <div style={{ display: 'flex', flexDirection: 'row', marginTop: '8px' }}>
+        <Icon text="真人大小" />
+        <div style={{ width: '3vw' }} />
+        <Icon text="绝世容颜" />
         <div style={{ width: '3vw' }} />
         <Icon text="拟人肌肤" />
         <div style={{ width: '3vw' }} />
-        <Icon text="智能语音" />
+        <Icon text="智能情趣" />
       </div>
 
     </div>
@@ -193,12 +202,12 @@ function DownloadApp(props) {
   const downloadEnable = useCallback(() => username.length === 11 && captcha.length === 4, [username, captcha])
 
   const login = useCallback(() => {
-    const { code,type } = queryString.parse(location.search)
+    const { code, type } = queryString.parse(location.search)
     postData(loginPath, {
       mobile: username,
       verificationCode: captcha,
       inviteCode: code || '',
-      inviteType:type?type:1
+      inviteType: type ? type : 1
     }).then((data) => {
       if (data.code === 200) {
         setHasLogin(true)
@@ -249,8 +258,8 @@ function DownloadApp(props) {
     fetchCode()
   }
 
-  const swiper1 =  <div style={{
-    height: '100%',
+  const swiper1 = <div style={{
+    height: '100vh',
     flex: 1,
     display: 'flex',
     flexDirection: 'column',
@@ -259,7 +268,7 @@ function DownloadApp(props) {
     <div>
       {isWx && inputFocus && !isIOS && (
         <div>
-          <img src={wxBg} className="App-wx-img" />}
+          <img src={wxBg} className="App-wx-img" />
         </div>
       )}
 
@@ -270,17 +279,17 @@ function DownloadApp(props) {
         flexDirection: 'column',
       }}
       >
-        <div style={{ marginTop: '25px' }} />
-        { hasLogin
+        <div style={{ marginTop: '24px' }} />
+        {hasLogin
           ? (
             <div style={{
-              display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '5vh',
+              display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '8pt',
             }}
             >
               <a href='https://apps.apple.com/cn/app/%E6%96%B9%E6%B3%A1%E6%B3%A1/id1560592820' >
                 <img src={appStoreDownload} />
               </a>
-              <div style={{height:"10vw"}}/>
+              <div style={{ height: "16pt" }} />
               <img src={wxQrcode} className="wx-qrcode-img" />
               <text className="wx-qrcode-text">{'记得关注微信公众号「方泡泡」联系我们哦'}</text>
             </div>
@@ -293,7 +302,7 @@ function DownloadApp(props) {
                 maxLength={11}
                 placeholder="请输入手机号"
                 value={username}
-                onFocus={()=>{
+                onFocus={() => {
                   setInputFocus(true)
                 }}
                 onChange={(e) => {
@@ -305,7 +314,7 @@ function DownloadApp(props) {
                 display: 'flex',
                 flexDirection: 'row',
                 alignItems: 'center',
-                marginTop: '3vh',
+                marginTop: '16pt',
                 marginLeft: '10%',
                 marginRight: '10%',
               }}
@@ -333,17 +342,17 @@ function DownloadApp(props) {
             </div>
           )}
 
-        <div style={{ marginTop: '8vh' }} />
+        <div style={{ marginTop: '48pt' }} />
 
         {isIOS ? (hasLogin ? <div /> : (
-            <button
-              className="App-download"
-              onClick={downloadApp}
-              disabled={!downloadEnable()}
-              type="submit"
-            >关注公众号/下载APP
-            </button>
-          ))
+          <button
+            className="App-download"
+            onClick={downloadApp}
+            disabled={!downloadEnable()}
+            type="submit"
+          >关注公众号/下载APP
+          </button>
+        ))
           : (
             <button
               className="App-download"
@@ -352,60 +361,82 @@ function DownloadApp(props) {
               type="submit"
             >关注公众号/下载APP
             </button>
-          ) }
+          )}
 
-          <div style={{width:"100%",
-            display:"flex",
-            justifyContent:"center",
-            alignItems:"center",
-            flexDirection:"column",
-            marginTop:15}}>
+        <div style={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+          marginTop: 36
+        }}>
+
+
           <EnterPriceQrCode
-            code={queryString.parse(location.search).code}/>
-            <text style={{marginTop:5,color:"white"}}>扫码添加客服企业微信</text>
+            code={queryString.parse(location.search).code} />
+          <text style={{ marginTop: 5, color: "white" }}>扫码添加客服企业微信</text>
+          
+          <div style={{ height: 24 }}/>
+
+          <div class="animate__animated animate__pulse animate__infinite">
+            <text style={{ color: "white", fontSize: 20, marginBottom: 20 }}>上滑了解更多</text>
           </div>
+        </div>
       </div>
     </div>
-    <IcpInfo />
   </div>
+
+  return (
+    <div style={{ width: "100vw", backgroundColor: '#282c34' }}>
+      {swiper1}
+      <IntroImg src={img1} />
+      <IntroImg src={img2} />
+      <IntroImg src={img3} />
+      <IntroImg src={img4} />
+      <IntroImg src={img5} />
+      <IntroImg src={img6} />
+      <IcpInfo />
+    </div>
+  )
 
 
   return (
-    <div style={{width:"100vw",height:"100vh",backgroundColor: '#282c34'}}>
-    <Swiper
-      direction={"vertical"}
-      onSlideChange={() => console.log('slide change')}
-      onSwiper={(swiper) => console.log(swiper)}
-      style={{height:"100vh"}}
-      pagination={{ el: '.swiper-pagination'}}
-  >
-  <SwiperSlide >{swiper1}</SwiperSlide>
+    <div style={{ width: "100vw", height: "100vh", backgroundColor: '#282c34' }}>
+      <Swiper
+        direction={"vertical"}
+        onSlideChange={() => console.log('slide change')}
+        onSwiper={(swiper) => console.log(swiper)}
+        style={{ height: "100vh" }}
+        pagination={{ el: '.swiper-pagination' }}
+      >
+        <SwiperSlide >{swiper1}</SwiperSlide>
 
-  <SwiperSlide>
-    <IntroImg src={img1}/>
-  </SwiperSlide>
+        <SwiperSlide>
+          <IntroImg src={img1} />
+        </SwiperSlide>
 
-      <SwiperSlide>
-        <IntroImg src={img2}/>
-      </SwiperSlide>
+        <SwiperSlide>
+          <IntroImg src={img2} />
+        </SwiperSlide>
 
-      <SwiperSlide>
-        <IntroImg src={img3}/>
-      </SwiperSlide>
+        <SwiperSlide>
+          <IntroImg src={img3} />
+        </SwiperSlide>
 
-      <SwiperSlide>
-        <IntroImg src={img4}/>
-      </SwiperSlide>
+        <SwiperSlide>
+          <IntroImg src={img4} />
+        </SwiperSlide>
 
-      <SwiperSlide>
-        <IntroImg src={img5}/>
-      </SwiperSlide>
+        <SwiperSlide>
+          <IntroImg src={img5} />
+        </SwiperSlide>
 
-      <SwiperSlide>
-        <IntroImg src={img6}/>
-      </SwiperSlide>
+        <SwiperSlide>
+          <IntroImg src={img6} />
+        </SwiperSlide>
 
-</Swiper>
+      </Swiper>
     </div>
   )
 }
