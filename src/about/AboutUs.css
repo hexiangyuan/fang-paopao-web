@@ -29,7 +29,7 @@
 
 .SloganTitle{
     color: white;
-    font-size: 6vw;
+    font-size: 8vw;
     font-weight: bold;
     display: flex;
     flex-direction: column;
@@ -38,7 +38,7 @@
 
 .SloganSubTitle{
     color: white;
-    font-size: 3vw;
+    font-size: 5vw;
     margin-top: 8px;
     text-align: center;
 }

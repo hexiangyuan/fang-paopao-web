@@ -14,10 +14,15 @@ import img4 from '../assets/img5_04.jpg'
 import img5 from '../assets/img5_05.jpg'
 import img6 from '../assets/img5_06.jpg'
 
-import qxXd0001 from "../assets/xd0001.jpg";
-import qxXd0018 from "../assets/xd0018.jpg";
 import qxXd0000 from "../assets/xd0000.jpg";
-
+import qxXd0001 from "../assets/xd0001.jpg";
+import qxXd0011 from "../assets/xd0011.jpg";
+import qxXd0012 from "../assets/xd0012.jpg";
+import qxXd0013 from "../assets/xd0013.jpg";
+import qxXd0014 from "../assets/xd0014.jpg";
+import qxXd0018 from "../assets/xd0018.jpg";
+import qxXd0019 from "../assets/xd0019.jpg";
+import qxXd0020 from "../assets/xd0020.jpg";
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'animate.css';
@@ -99,8 +104,8 @@ function Icon(props) {
       alignItems: 'center',
     }}
     >
-      <img src={icon_nb} width={36} height={36} />
-      <text className="commonText">{props.text}</text>
+      <img src={icon_nb} width={18} height={18} />
+      <text className="commonText" style={{fontSize:14}}>{props.text}</text>
     </div>
   )
 }
@@ -124,14 +129,37 @@ export function IcpInfo(props) {
 
 function EnterPriceQrCode(props) {
   switch (props.code) {
-    case "xd0018":
-
-      return (
-        <img src={qxXd0018} width={100} height={100} />
-      )
     case "xd0001":
       return (
         <img src={qxXd0001} width={100} height={100} />
+      )
+    case "xd0011":
+      return (
+        <img src={qxXd0011} width={100} height={100} />
+      )
+    case "xd0012":
+      return (
+        <img src={qxXd0012} width={100} height={100} />
+      )
+    case "xd0013":
+      return (
+        <img src={qxXd0013} width={100} height={100} />
+      )
+    case "xd0014":
+      return (
+        <img src={qxXd0014} width={100} height={100} />
+      )
+    case "xd0018":
+      return (
+        <img src={qxXd0018} width={100} height={100} />
+      )
+    case "xd0019":
+      return (
+        <img src={qxXd0019} width={100} height={100} />
+      )
+    case "xd0020":
+      return (
+        <img src={qxXd0020} width={100} height={100} />
       )
     default:
       return (
@@ -376,8 +404,8 @@ function DownloadApp(props) {
           <EnterPriceQrCode
             code={queryString.parse(location.search).code} />
           <text style={{ marginTop: 5, color: "white" }}>扫码添加客服企业微信</text>
-          
-          <div style={{ height: 24 }}/>
+
+          <div style={{ height: 24 }} />
 
           <div class="animate__animated animate__pulse animate__infinite">
             <text style={{ color: "white", fontSize: 20, marginBottom: 20 }}>上滑了解更多</text>
@@ -397,46 +425,6 @@ function DownloadApp(props) {
       <IntroImg src={img5} />
       <IntroImg src={img6} />
       <IcpInfo />
-    </div>
-  )
-
-
-  return (
-    <div style={{ width: "100vw", height: "100vh", backgroundColor: '#282c34' }}>
-      <Swiper
-        direction={"vertical"}
-        onSlideChange={() => console.log('slide change')}
-        onSwiper={(swiper) => console.log(swiper)}
-        style={{ height: "100vh" }}
-        pagination={{ el: '.swiper-pagination' }}
-      >
-        <SwiperSlide >{swiper1}</SwiperSlide>
-
-        <SwiperSlide>
-          <IntroImg src={img1} />
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <IntroImg src={img2} />
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <IntroImg src={img3} />
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <IntroImg src={img4} />
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <IntroImg src={img5} />
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <IntroImg src={img6} />
-        </SwiperSlide>
-
-      </Swiper>
     </div>
   )
 }
