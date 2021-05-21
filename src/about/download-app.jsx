@@ -105,7 +105,7 @@ function Icon(props) {
     }}
     >
       <img src={icon_nb} width={18} height={18} />
-      <text className="commonText" style={{fontSize:14}}>{props.text}</text>
+      <text className="commonText" style={{ fontSize: 14 }}>{props.text}</text>
     </div>
   )
 }
@@ -407,6 +407,7 @@ function DownloadApp(props) {
 
           <div style={{ height: 24 }} />
 
+          <text style={{ color: "white", fontSize: 12, marginBottom: 12 }}>客服电话：17601238095</text>
           <div class="animate__animated animate__pulse animate__infinite">
             <text style={{ color: "white", fontSize: 20, marginBottom: 20 }}>上滑了解更多</text>
           </div>
