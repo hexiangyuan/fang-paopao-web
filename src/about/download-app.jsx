@@ -22,7 +22,10 @@ import qxXd0013 from "../assets/xd0013.jpg";
 import qxXd0014 from "../assets/xd0014.jpg";
 import qxXd0018 from "../assets/xd0018.jpg";
 import qxXd0019 from "../assets/xd0019.jpg";
-import qxXd0020 from "../assets/xd0020.jpg";
+import qxXd0020 from "../assets/xd0020.jpg"; 
+import qxXd0021 from "../assets/xd0021.jpeg"; 
+import qxXd0022 from "../assets/xd0022.jpeg"; 
+import qxXd0023 from "../assets/xd0023.jpeg";
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'animate.css';
@@ -160,6 +163,18 @@ function EnterPriceQrCode(props) {
     case "xd0020":
       return (
         <img src={qxXd0020} width={100} height={100} />
+      )
+      case "xd0021":
+      return (
+        <img src={qxXd0021} width={100} height={100} />
+      )
+      case "xd0022":
+      return (
+        <img src={qxXd0022} width={100} height={100} />
+      )
+      case "xd0023":
+      return (
+        <img src={qxXd0023} width={100} height={100} />
       )
     default:
       return (
