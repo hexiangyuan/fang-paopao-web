@@ -29,6 +29,7 @@ import qxXd0023 from "../assets/xd0023.jpeg";
 import qxXd0031 from "../assets/xd0031.jpg";
 import qxXd0032 from "../assets/xd0032.jpg";
 import qxXd0033 from "../assets/xd0033.jpg";
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'animate.css';
 
@@ -39,9 +40,9 @@ import 'swiper/swiper.scss';
 import './AboutUs.css'
 
 
-const loginPath = '/api/login/mobile'
+const loginPath = '/test/login/mobile'
 
-const getCodePath = '/api/common/verification-code'
+const getCodePath = '/test/common/verification-code'
 
 function postData(url, data) {
   // Default options are marked with *
@@ -245,7 +246,7 @@ function Body(props) {
       <AppIcon />
       <Slogan
         title="成人情趣  实体娃娃"
-        subTitle="APP预约享优惠价"
+        subTitle="APP在线预约立减80"
       />
 
       <div style={{ display: 'flex', flexDirection: 'row', marginTop: '8px' }}>
@@ -373,9 +374,9 @@ function DownloadApp(props) {
               display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '8pt',
             }}
             >
-             {isIOS && <a href='https://apps.apple.com/cn/app/%E6%96%B9%E6%B3%A1%E6%B3%A1/id1560592820' >
+              <a href='https://apps.apple.com/cn/app/%E6%96%B9%E6%B3%A1%E6%B3%A1/id1560592820' >
                 <img src={appStoreDownload} />
-              </a>}
+              </a>
               <div style={{ height: "16pt" }} />
               <img src={wxQrcode} className="wx-qrcode-img" />
               <text className="wx-qrcode-text">{'记得关注微信公众号「方泡泡」联系我们哦'}</text>
@@ -387,7 +388,7 @@ function DownloadApp(props) {
                 className="input-mobile"
                 type="tel"
                 maxLength={11}
-                placeholder="请输入手机号"
+                placeholder="请输入手机号测试"
                 value={username}
                 onFocus={() => {
                   setInputFocus(true)
@@ -470,7 +471,7 @@ function DownloadApp(props) {
 
           <div style={{ height: 24 }} />
 
-        <text style={{ color: "white", fontSize: 12, marginBottom: 12 }}>客服电话：17521368841</text>
+        <text style={{ color: "white", fontSize: 12, marginBottom: 12 }}>客服电话：17601238095</text>
         <div class="animate__animated animate__pulse animate__infinite">
           <text style={{ color: "white", fontSize: 20, marginBottom: 20 }}>上滑了解更多</text>
         </div>
