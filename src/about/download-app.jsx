@@ -23,7 +23,7 @@ import qxXd0014 from "../assets/xd0014.jpg";
 import qxXd0018 from "../assets/xd0018.jpg";
 import qxXd0019 from "../assets/xd0019.jpg";
 import qxXd0020 from "../assets/xd0020.jpg";
-import qxXd0021 from "../assets/xd0021.jpeg";
+import qxXd0021 from "../assets/xd0021.png";
 import qxXd0022 from "../assets/xd0022.jpeg";
 import qxXd0023 from "../assets/xd0023.jpeg";
 import qxXd0031 from "../assets/xd0031.jpg";
