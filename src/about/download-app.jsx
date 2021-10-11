@@ -125,7 +125,7 @@ export function IcpInfo(props) {
       alignItems: 'center',
       width: '100%',
       marginTop: 48,
-      paddingBottom: 12,
+      paddingBottom: 12 + 60,
     }}
     >
       <text style={{ color: 'white', fontSize: 12 }}>上海方和信息技术有限公司</text>
@@ -236,7 +236,6 @@ function Slogan(props) {
     }}
     >
       <text className="SloganTitle">{props.title}</text>
-      <text className="SloganSubTitle">{props.subTitle}</text>
     </div>
   )
 }
@@ -387,9 +386,9 @@ function DownloadApp(props) {
 
           {isWx && <img src={gzhCode} width={100} height={100} />}
 
-          {isWx && <text style={{ marginTop: 5, color: "white" }}>长按二维码添加客服微信</text>}
+          {isWx && <text style={{ marginTop: 5, color: "white" }}>长按二维码添加添加公众号</text>}
 
-          <text style={{ marginTop: 5, color: "white" }}>微信搜索“方泡泡”</text>
+          {!isWx && <text style={{ marginTop: 5, color: "white" }}>微信搜索“方泡泡”</text>}
 
           <div style={{ height: 24 }} />
 
@@ -400,6 +399,12 @@ function DownloadApp(props) {
 
           {!isWx && <a style={{ marginTop: 5, color: "white" }}
             href={getKeFu(queryString.parse(location.search).code).url}>点击添加客服微信</a>}
+
+          <text style={{
+            marginTop: 12,
+            textAlign: 'center',
+            color: "white", fontSize: 20, paddingLeft: 20, paddingRight: 20
+          }}>由于产品过于逼真，细节私密图片请联系客服查看</text>
 
           <div style={{ height: 24 }} />
 
@@ -444,10 +449,29 @@ function DownloadApp(props) {
         <img src={"https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/webAssets/h5cap.jpeg"}
           style={{ width: "100vw", display: 'block', margin: 'auto' }}
           onClick={openBuy}
-        ></img>
-
+        />
       </div>
       <IcpInfo />
+
+
+      <div style={{
+        position: "fixed",
+        display: 'flex',
+        bottom: 0,
+        background: "rgb(248,33,54)",
+        width: '100%',
+        padding: 12,
+        justifyContent: 'center', alignContent: 'center',
+
+      }}
+        onClick={openBuy}
+      >
+        <a style={{
+          color: 'white',
+        }}
+
+        >查看更多</a>
+      </div>
     </div>
   )
 }
