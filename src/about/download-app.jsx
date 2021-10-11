@@ -1,7 +1,7 @@
 import app_icon from '../assets/app-icon.png'
 import icon_nb from '../assets/ic_nb.png'
 import { useLocation } from 'react-router-dom'
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useCallback, useRef } from 'react'
 
 import queryString from 'query-string'
 import wxBg from '../assets/wx-tips.png'
@@ -29,6 +29,7 @@ import qxXd0023 from "../assets/xd0023.jpeg";
 import qxXd0031 from "../assets/xd0031.jpg";
 import qxXd0032 from "../assets/xd0032.jpg";
 import qxXd0033 from "../assets/xd0033.jpg";
+import gzhCode from "../assets/gzhao_code.jpg";
 
 import 'animate.css';
 
@@ -37,6 +38,7 @@ import 'animate.css';
 // Import Swiper styles
 import 'swiper/swiper.scss';
 import './AboutUs.css'
+import { Alert } from 'antd'
 
 
 const loginPath = '/api/login/mobile'
@@ -97,7 +99,7 @@ function AppIcon(props) {
   return (
     <div className="AppIconDiv">
       <img src={app_icon} className="AppIconImage" height={72} width={72} />
-      <text className="AppIconText">方泡泡APP</text>
+      <text className="AppIconText">方泡泡</text>
     </div>
   )
 }
@@ -273,6 +275,10 @@ function DownloadApp(props) {
   const [isIOS, setIsIos] = useState(false)
   const [hasLogin, setHasLogin] = useState(false)
   const [inputFocus, setInputFocus] = useState(false)
+  const [iframeScrolled, setIframScrlled] = useState(false)
+  const [scrollString, setScrollString] = useState("")
+
+  const contentRef = useRef(null);
 
   const fetchCode = useCallback(() => {
     if (username && username.length === 11) {
@@ -333,6 +339,10 @@ function DownloadApp(props) {
     console.log(JSON.stringify(query))
   }, [])
 
+  const openBuy = useCallback(() => {
+    window.open("https://shop1699852002.v.weidian.com/item.html?itemID=4423081163&vc_wfr=wechat_gzh&ifr=itemdetail&state=H5WXshareOld&distributorId=1165344788&share_relation=5d4bcf182678fd8f_1165344788_1&wfr=h5direct_wxh5")
+  }, [])
+
   function downloadApp() {
     if (hasLogin) {
       window.location.href = 'https://fanghe.oss-cn-beijing.aliyuncs.com/fangpaopao-android.f10a701e.apk'
@@ -346,7 +356,6 @@ function DownloadApp(props) {
   }
 
   const swiper1 = <div style={{
-    height: '100vh',
     flex: 1,
     display: 'flex',
     flexDirection: 'column',
@@ -367,89 +376,6 @@ function DownloadApp(props) {
       }}
       >
         <div style={{ marginTop: '24px' }} />
-        {hasLogin
-          ? (
-            <div style={{
-              display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '8pt',
-            }}
-            >
-             {isIOS && <a href='https://apps.apple.com/cn/app/%E6%96%B9%E6%B3%A1%E6%B3%A1/id1560592820' >
-                <img src={appStoreDownload} />
-              </a>}
-              <div style={{ height: "16pt" }} />
-              <img src={wxQrcode} className="wx-qrcode-img" />
-              <text className="wx-qrcode-text">{'记得关注微信公众号「方泡泡」联系我们哦'}</text>
-            </div>
-          )
-          : (
-            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-              <input
-                className="input-mobile"
-                type="tel"
-                maxLength={11}
-                placeholder="请输入手机号"
-                value={username}
-                onFocus={() => {
-                  setInputFocus(true)
-                }}
-                onChange={(e) => {
-                  setUsername(e.target.value)
-                }}
-              />
-
-              <div style={{
-                display: 'flex',
-                flexDirection: 'row',
-                alignItems: 'center',
-                marginTop: '16pt',
-                marginLeft: '10%',
-                marginRight: '10%',
-              }}
-              >
-
-                <input
-                  className="input-verification"
-                  placeholder="请输入验证码"
-                  value={captcha}
-                  onChange={(e) => {
-                    setCaptcha(e.target.value)
-                  }}
-                />
-
-                <button
-                  className="btn-get-code"
-                  disabled={timing}
-                  onClick={getCode}
-                >
-                  {timing ? `${count / 1000} S` : '验证码'}
-                </button>
-
-              </div>
-
-            </div>
-          )}
-
-        <div style={{ marginTop: '48pt' }} />
-
-        {isIOS ? (hasLogin ? <div /> : (
-          <button
-            className="App-download"
-            onClick={downloadApp}
-            disabled={!downloadEnable()}
-            type="submit"
-          >关注公众号/下载APP
-          </button>
-        ))
-          : (
-            <button
-              className="App-download"
-              onClick={downloadApp}
-              disabled={!downloadEnable()}
-              type="submit"
-            >关注公众号/下载APP
-            </button>
-          )}
-
         <div style={{
           width: "100%",
           display: "flex",
@@ -459,6 +385,13 @@ function DownloadApp(props) {
           marginTop: 36
         }}>
 
+          {isWx && <img src={gzhCode} width={100} height={100} />}
+
+          {isWx && <text style={{ marginTop: 5, color: "white" }}>长按二维码添加客服微信</text>}
+
+          <text style={{ marginTop: 5, color: "white" }}>微信搜索“方泡泡”</text>
+
+          <div style={{ height: 24 }} />
 
           <EnterPriceQrCode
             code={queryString.parse(location.search).code} />
@@ -466,28 +399,54 @@ function DownloadApp(props) {
           {isWx && <text style={{ marginTop: 5, color: "white" }}>长按二维码添加客服微信</text>}
 
           {!isWx && <a style={{ marginTop: 5, color: "white" }}
-           href={getKeFu(queryString.parse(location.search).code).url}>点击添加客服微信</a>}
+            href={getKeFu(queryString.parse(location.search).code).url}>点击添加客服微信</a>}
 
           <div style={{ height: 24 }} />
 
-        <text style={{ color: "white", fontSize: 12, marginBottom: 12 }}>客服电话：17521368841</text>
-        <div class="animate__animated animate__pulse animate__infinite">
-          <text style={{ color: "white", fontSize: 20, marginBottom: 20 }}>上滑了解更多</text>
+          <text style={{ color: "white", fontSize: 12, marginBottom: 12 }}>客服电话：17521368841</text>
+
+          <div class="animate__animated animate__pulse animate__infinite">
+            <text style={{ color: "white", fontSize: 20, marginBottom: 20 }}>上滑了解更多</text>
+          </div>
+
+          <img src={"https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/webAssets/详情0626_03.jpg?x-oss-process=image/resize,h_800,m_lfit"}
+            style={
+              { maxHeight: '100%', width: "100%", display: 'block', margin: 'auto' }
+            }
+            onClick={openBuy}
+          />
+
+          <img src={"https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/webAssets/详情0711_02.jpg?x-oss-process=image/resize,h_800,m_lfit"}
+            style={
+              { maxHeight: '100%', width: "100%", display: 'block', margin: 'auto' }
+            }
+            onClick={openBuy}
+          />
+
         </div>
       </div>
     </div>
-  </div>
   </div >
 
+  const scrollEvent = (e) => {
+    const clientHeight = e.target.clientHeight
+    const scrollHeight = e.target.scrollHeight
+    const scrollTop = e.target.scrollTop
+    const isBottom = (clientHeight + scrollTop === scrollHeight)
+    setScrollString("clientHeight" + "=" + clientHeight + "scrollToP=" + scrollTop + "scrollHeight=" + scrollHeight)
+    setIframScrlled(isBottom)
+  }
+
   return (
-    <div style={{ width: "100vw", backgroundColor: '#282c34' }}>
+    <div onScroll={scrollEvent} style={{ width: "100vw", overflowY: "scroll", backgroundColor: '#282c34' }} >
       {swiper1}
-      <IntroImg src={img1} />
-      <IntroImg src={img2} />
-      <IntroImg src={img3} />
-      <IntroImg src={img4} />
-      <IntroImg src={img5} />
-      <IntroImg src={img6} />
+      <div>
+        <img src={"https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/webAssets/h5cap.jpeg"}
+          style={{ width: "100vw", display: 'block', margin: 'auto' }}
+          onClick={openBuy}
+        ></img>
+
+      </div>
       <IcpInfo />
     </div>
   )
