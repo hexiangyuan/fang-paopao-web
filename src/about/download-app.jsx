@@ -399,20 +399,20 @@ function DownloadApp(props) {
 
           {!isWx && <a style={{ marginTop: 5, color: "white" }}
             href={getKeFu(queryString.parse(location.search).code).url}>点击添加客服微信</a>}
+          <div style={{ height: 8 }} />
 
-          <text style={{
-            marginTop: 12,
-            textAlign: 'center',
-            color: "white", fontSize: 20, paddingLeft: 20, paddingRight: 20
-          }}>由于产品过于逼真，细节私密图片请联系客服查看</text>
+          <div class="animate__animated animate__pulse animate__infinite">
+            <text style={{
+              textAlign: 'center',
+              color: "white",
+              fontSize: 16, paddingLeft: 20, paddingRight: 20
+            }}>由于产品过于逼真，细节私密图片请联系客服查看</text>
+          </div>
 
           <div style={{ height: 24 }} />
 
           <text style={{ color: "white", fontSize: 12, marginBottom: 12 }}>客服电话：17521368841</text>
 
-          <div class="animate__animated animate__pulse animate__infinite">
-            <text style={{ color: "white", fontSize: 20, marginBottom: 20 }}>上滑了解更多</text>
-          </div>
 
           <img src={"https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/webAssets/详情0626_03.jpg?x-oss-process=image/resize,h_800,m_lfit"}
             style={
