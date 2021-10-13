@@ -343,11 +343,11 @@ function DownloadApp(props) {
   }, [])
 
   function downloadApp() {
-    if (hasLogin) {
+    // if (hasLogin) {
       window.location.href = 'https://fanghe.oss-cn-beijing.aliyuncs.com/fangpaopao-android.f10a701e.apk'
-    } else {
-      login()
-    }
+    // } else {
+      // login()
+    // }
   }
 
   function getCode() {
@@ -413,6 +413,23 @@ function DownloadApp(props) {
 
           <text style={{ color: "white", fontSize: 12, marginBottom: 12 }}>客服电话：17521368841</text>
 
+          <div style={{
+            display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '8pt',
+          }}
+          >
+            {isIOS ? (<a href='https://apps.apple.com/cn/app/%E6%96%B9%E6%B3%A1%E6%B3%A1/id1560592820' >
+              <img src={appStoreDownload} />
+            </a>) : (<button
+              className="App-download"
+              onClick={downloadApp}
+              type="submit"
+            > {"   直接下载APP    "}
+            </button>)}
+
+
+            <div style={{ height: "16pt" }} />
+          </div>
+
 
           <img src={"https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/webAssets/详情0626_03.jpg?x-oss-process=image/resize,h_800,m_lfit"}
             style={
@@ -433,17 +450,9 @@ function DownloadApp(props) {
     </div>
   </div >
 
-  const scrollEvent = (e) => {
-    const clientHeight = e.target.clientHeight
-    const scrollHeight = e.target.scrollHeight
-    const scrollTop = e.target.scrollTop
-    const isBottom = (clientHeight + scrollTop === scrollHeight)
-    setScrollString("clientHeight" + "=" + clientHeight + "scrollToP=" + scrollTop + "scrollHeight=" + scrollHeight)
-    setIframScrlled(isBottom)
-  }
 
   return (
-    <div onScroll={scrollEvent} style={{ width: "100vw", overflowY: "scroll", backgroundColor: '#282c34' }} >
+    <div style={{ width: "100vw", overflowY: "scroll", backgroundColor: '#282c34' }} >
       {swiper1}
       <div>
         <img src={"https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/webAssets/h5cap.jpeg"}

@@ -78,8 +78,10 @@
     background-image: linear-gradient(to right, #FF8126 , #ff117e);
     color: white;
     border-radius: 100px;
-    padding-top: 2vw;
-    padding-bottom: 2vw;
+    padding-top: 4vw;
+    padding-left: 20vw;
+    padding-right: 20vw;
+    padding-bottom: 4vw;
     border-width: 0;
     font-size: 15px;
     margin-left: 10vw;
