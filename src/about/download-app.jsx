@@ -339,14 +339,14 @@ function DownloadApp(props) {
   }, [])
 
   const openBuy = useCallback(() => {
-    window.open("https://shop1699852002.v.weidian.com/item.html?itemID=4423081163&vc_wfr=wechat_gzh&ifr=itemdetail&state=H5WXshareOld&distributorId=1165344788&share_relation=5d4bcf182678fd8f_1165344788_1&wfr=h5direct_wxh5")
-  }, [])
+    window.open(isWx ? "https://wxaurl.cn/qE0UcR1TR6s" : "https://shop1699852002.v.weidian.com/item.html?itemID=4423081163&vc_wfr=wechat_gzh&ifr=itemdetail&state=H5WXshareOld&distributorId=1165344788&share_relation=5d4bcf182678fd8f_1165344788_1&wfr=h5direct_wxh5")
+  }, [isWx])
 
   function downloadApp() {
     // if (hasLogin) {
-      window.location.href = 'https://fanghe.oss-cn-beijing.aliyuncs.com/fangpaopao-android.f10a701e.apk'
+    window.location.href = 'https://fanghe.oss-cn-beijing.aliyuncs.com/fangpaopao-android.f10a701e.apk'
     // } else {
-      // login()
+    // login()
     // }
   }
 
