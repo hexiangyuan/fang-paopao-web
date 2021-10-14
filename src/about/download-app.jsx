@@ -344,7 +344,7 @@ function DownloadApp(props) {
 
   function downloadApp() {
     // if (hasLogin) {
-    window.location.href = 'https://fanghe.oss-cn-beijing.aliyuncs.com/fangpaopao-android.f10a701e.apk'
+    window.location.href = 'https://fangpaopao-app.oss-cn-shanghai.aliyuncs.com/fangpaopao-android.apk'
     // } else {
     // login()
     // }
