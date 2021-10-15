@@ -339,7 +339,8 @@ function DownloadApp(props) {
   }, [])
 
   const openBuy = useCallback(() => {
-    window.open(isWx ? "https://wxaurl.cn/qE0UcR1TR6s" : "https://shop1699852002.v.weidian.com/item.html?itemID=4423081163&vc_wfr=wechat_gzh&ifr=itemdetail&state=H5WXshareOld&distributorId=1165344788&share_relation=5d4bcf182678fd8f_1165344788_1&wfr=h5direct_wxh5")
+    // window.open(isWx ? "https://wxaurl.cn/qE0UcR1TR6s" : "https://shop1699852002.v.weidian.com/item.html?itemID=4423081163&vc_wfr=wechat_gzh&ifr=itemdetail&state=H5WXshareOld&distributorId=1165344788&share_relation=5d4bcf182678fd8f_1165344788_1&wfr=h5direct_wxh5")
+    window.open("https://wxaurl.cn/qE0UcR1TR6s")
   }, [isWx])
 
   function downloadApp() {
