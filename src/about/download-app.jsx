@@ -83,6 +83,23 @@ function checkIsIOS() {
   return false
 }
 
+
+function checkIsAndroid() {
+  const agent = (navigator.userAgent || navigator.vendor || window.opera)
+
+  if (agent != null) {
+    const agentName = agent.toLowerCase()
+
+    if (/android/i.test(agentName)) {
+      return true
+    } if (/iphone/i.test(agentName)) {
+      return false
+    }
+    return false
+  }
+  return false
+}
+
 const IntroImg = (props) => {
   return (<div style={{
     alignItems: "center",
@@ -272,6 +289,7 @@ function DownloadApp(props) {
   const [timing, setTiming] = useState(false)
   const [count, setCount] = useState(30000)
   const [isIOS, setIsIos] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
   const [hasLogin, setHasLogin] = useState(false)
   const [inputFocus, setInputFocus] = useState(false)
   const [iframeScrolled, setIframScrlled] = useState(false)
@@ -334,14 +352,19 @@ function DownloadApp(props) {
     const isWeiXin = navigator.userAgent.toLowerCase().indexOf('micromessenger') > -1
     setIsWx(isWeiXin)
     setIsIos(checkIsIOS())
+    setIsMobile(checkIsIOS() || checkIsAndroid())
     const query = queryString.parse(location.search)
     console.log(JSON.stringify(query))
   }, [])
 
   const openBuy = useCallback(() => {
     // window.open(isWx ? "https://wxaurl.cn/qE0UcR1TR6s" : "https://shop1699852002.v.weidian.com/item.html?itemID=4423081163&vc_wfr=wechat_gzh&ifr=itemdetail&state=H5WXshareOld&distributorId=1165344788&share_relation=5d4bcf182678fd8f_1165344788_1&wfr=h5direct_wxh5")
-    window.open("https://wxaurl.cn/qE0UcR1TR6s")
+    window.open("weixin://dl/business/?t=OVoiLVi9kgc")
   }, [isWx])
+
+  const openMiniCustomer = useCallback(() => {
+    window.open("weixin://dl/business/?t=hhrJvpGxGfq")
+  }, [isWx, isMobile])
 
   function downloadApp() {
     // if (hasLogin) {
@@ -391,23 +414,23 @@ function DownloadApp(props) {
 
           {!isWx && <text style={{ marginTop: 5, color: "white" }}>微信搜索“方泡泡”</text>}
 
-          <div style={{ height: 24 }} />
+          <div style={{ height: 8 }} />
 
-          <EnterPriceQrCode
-            code={queryString.parse(location.search).code} />
+          {!(isMobile) && <EnterPriceQrCode
+            code={queryString.parse(location.search).code} />}
 
-          {isWx && <text style={{ marginTop: 5, color: "white" }}>长按二维码添加客服微信</text>}
+          {isMobile && <a style={{ marginTop: 5, color: "white" }} href="weixin://dl/business/?t=hhrJvpGxGfq">联系客服查看图片</a>}
 
-          {!isWx && <a style={{ marginTop: 5, color: "white" }}
-            href={getKeFu(queryString.parse(location.search).code).url}>点击添加客服微信</a>}
           <div style={{ height: 8 }} />
 
           <div class="animate__animated animate__pulse animate__infinite">
-            <text style={{
-              textAlign: 'center',
-              color: "white",
-              fontSize: 16, paddingLeft: 20, paddingRight: 20
-            }}>由于产品过于逼真，细节私密图片请联系客服查看</text>
+            <a
+              href="weixin://dl/business/?t=hhrJvpGxGfq"
+              style={{
+                textAlign: 'center',
+                color: "white",
+                fontSize: 16, paddingLeft: 20, paddingRight: 20
+              }}>由于产品过于逼真，细节私密图片请联系客服查看</a>
           </div>
 
           <div style={{ height: 24 }} />
