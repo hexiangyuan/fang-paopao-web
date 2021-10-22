@@ -359,7 +359,7 @@ function DownloadApp(props) {
 
   const openBuy = useCallback(() => {
     // window.open(isWx ? "https://wxaurl.cn/qE0UcR1TR6s" : "https://shop1699852002.v.weidian.com/item.html?itemID=4423081163&vc_wfr=wechat_gzh&ifr=itemdetail&state=H5WXshareOld&distributorId=1165344788&share_relation=5d4bcf182678fd8f_1165344788_1&wfr=h5direct_wxh5")
-    window.open("weixin://dl/business/?t=OVoiLVi9kgc")
+    window.open("weixin://dl/business/?t=FSmfjOH2Iws")
   }, [isWx])
 
   const openMiniCustomer = useCallback(() => {
@@ -416,26 +416,48 @@ function DownloadApp(props) {
 
           <div style={{ height: 8 }} />
 
-          {!(isMobile) && <EnterPriceQrCode
-            code={queryString.parse(location.search).code} />}
+          {isMobile ? (<div>
 
-          {isMobile && <a style={{ marginTop: 5, color: "white" }} href="weixin://dl/business/?t=hhrJvpGxGfq">联系客服查看图片</a>}
+            {isWx && <div style={{ display: "flex", flexDirection: 'column', alignItems: 'center' }}>
+              <EnterPriceQrCode
+                code={queryString.parse(location.search).code} />
+              <a style={{ marginTop: 5, color: "white", textAlign: 'center' }}>长按添加客服微信</a>
+            </div>
+            }
+            <div style={{ display: "flex", flexDirection: 'column', alignItems: 'center', width: '100%' }}>
+              <a
+                style={{ marginTop: 5, color: "white", textAlign: 'center' }}
+                href={isWx ? null : "weixin://dl/business/?t=hhrJvpGxGfq"}>联系客服查看图片
+              </a>
+            </div>
 
-          <div style={{ height: 8 }} />
+            <div class="animate__animated animate__pulse animate__infinite">
+              <a
+                href={isWx ? null : "weixin://dl/business/?t=hhrJvpGxGfq"}
+                style={{
+                  textAlign: 'center',
+                  color: "white",
+                  fontSize: 16,
+                  paddingLeft: 20,
+                  paddingRight: 20
+                }}>由于产品过于逼真，细节私密图片请联系客服查看</a>
+            </div>
 
-          <div class="animate__animated animate__pulse animate__infinite">
-            <a
-              href="weixin://dl/business/?t=hhrJvpGxGfq"
-              style={{
-                textAlign: 'center',
-                color: "white",
-                fontSize: 16, paddingLeft: 20, paddingRight: 20
-              }}>由于产品过于逼真，细节私密图片请联系客服查看</a>
-          </div>
+            <div style={{ height: 8 }} />
+
+          </div>) :
+            <div style={{ display: "flex", flexDirection: 'column', alignItems: 'center' }}>
+              <EnterPriceQrCode
+                code={queryString.parse(location.search).code} />
+              <a style={{ marginTop: 5, color: "white", textAlign: 'center' }}>扫码添加客服微信</a>
+            </div>
+          }
+
+
 
           <div style={{ height: 24 }} />
 
-          <text style={{ color: "white", fontSize: 12, marginBottom: 12 }}>客服电话：17521368841</text>
+          <a style={{ color: "white", fontSize: 16, marginBottom: 12 }} href="tel:17521368841">拨打客服电话：17521368841</a>
 
           <div style={{
             display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '8pt',
@@ -455,7 +477,7 @@ function DownloadApp(props) {
           </div>
 
 
-          <img src={"https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/webAssets/详情0626_03.jpg?x-oss-process=image/resize,h_800,m_lfit"}
+          <img src={"https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/webAssets/%E8%AF%A6%E6%83%850711_08.jpg?x-oss-process=image/resize,h_800,m_lfit"}
             style={
               { maxHeight: '100%', width: "100%", display: 'block', margin: 'auto' }
             }
@@ -463,6 +485,33 @@ function DownloadApp(props) {
           />
 
           <img src={"https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/webAssets/详情0711_02.jpg?x-oss-process=image/resize,h_800,m_lfit"}
+            style={
+              { maxHeight: '100%', width: "100%", display: 'block', margin: 'auto' }
+            }
+            onClick={openBuy}
+          />
+
+          <img src={"https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/webAssets/%E8%AF%A6%E6%83%850626_04.jpg?x-oss-process=image/resize,h_800,m_lfit"}
+            style={
+              { maxHeight: '100%', width: "100%", display: 'block', margin: 'auto' }
+            }
+            onClick={openBuy}
+          />
+
+          <img src={"https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/webAssets/02-1_02.jpg?x-oss-process=image/resize,h_800,m_lfit"}
+            style={
+              { maxHeight: '100%', width: "100%", display: 'block', margin: 'auto' }
+            }
+            onClick={openBuy}
+          />
+
+          <img src={"https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/webAssets/%E8%AF%A6%E6%83%850815-2_07.jpg?x-oss-process=image/resize,h_800,m_lfit"}
+            style={
+              { maxHeight: '100%', width: "100%", display: 'block', margin: 'auto' }
+            }
+            onClick={openBuy}
+          />
+          <img src={"https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/webAssets/%E8%AF%A6%E6%83%850610-%E6%8B%B7%E8%B4%9D_01.jpg?x-oss-process=image/resize,h_800,m_lfit"}
             style={
               { maxHeight: '100%', width: "100%", display: 'block', margin: 'auto' }
             }
@@ -478,12 +527,6 @@ function DownloadApp(props) {
   return (
     <div style={{ width: "100vw", overflowY: "scroll", backgroundColor: '#282c34' }} >
       {swiper1}
-      <div>
-        <img src={"https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/webAssets/h5cap.jpeg"}
-          style={{ width: "100vw", display: 'block', margin: 'auto' }}
-          onClick={openBuy}
-        />
-      </div>
       <IcpInfo />
 
 
