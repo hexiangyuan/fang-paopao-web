@@ -5,31 +5,8 @@ import { useEffect, useState, useCallback, useRef } from 'react'
 
 import queryString from 'query-string'
 import wxBg from '../assets/wx-tips.png'
-import wxQrcode from '../assets/wx_qr_img.png'
 import appStoreDownload from '../assets/apple-store-download.png'
-import img1 from '../assets/img5_01.jpg'
-import img2 from '../assets/img5_02.jpg'
-import img3 from '../assets/img5_03.jpg'
-import img4 from '../assets/img5_04.jpg'
-import img5 from '../assets/img5_05.jpg'
-import img6 from '../assets/img5_06.jpg'
-
-import qxXd0000 from "../assets/xd0000.jpg";
-import qxXd0001 from "../assets/xd0001.jpg";
-import qxXd0011 from "../assets/xd0011.jpg";
-import qxXd0012 from "../assets/xd0012.jpg";
-import qxXd0013 from "../assets/xd0013.jpg";
-import qxXd0014 from "../assets/xd0014.jpg";
-import qxXd0018 from "../assets/xd0018.jpg";
-import qxXd0019 from "../assets/xd0019.jpg";
-import qxXd0020 from "../assets/xd0020.jpg";
-import qxXd0021 from "../assets/xd0021.png";
-import qxXd0022 from "../assets/xd0022.jpeg";
-import qxXd0023 from "../assets/xd0023.jpeg";
-import qxXd0031 from "../assets/xd0031.jpg";
-import qxXd0032 from "../assets/xd0032.jpg";
-import qxXd0033 from "../assets/xd0033.jpg";
-import gzhCode from "../assets/gzhao_code.jpg";
+import miniCode from '../assets/mini_program_code.jpg'
 
 import 'animate.css';
 
@@ -152,9 +129,9 @@ export function IcpInfo(props) {
 }
 
 function EnterPriceQrCode(props) {
-  return <img src={getCustomerCode(props.code)} 
-  onError={(e)=>{e.target.onerror = null; e.target.src="https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/webAssets/xd0000.jpg"}}
-  width={100} height={100} />  
+  return <img src={getCustomerCode(props.code)}
+    onError={(e) => { e.target.onerror = null; e.target.src = "https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/webAssets/xd0000.jpg" }}
+    width={100} height={100} />
 }
 
 
@@ -311,8 +288,15 @@ function DownloadApp(props) {
   }, [])
 
   const openBuy = useCallback(() => {
-    // window.open(isWx ? "https://wxaurl.cn/qE0UcR1TR6s" : "https://shop1699852002.v.weidian.com/item.html?itemID=4423081163&vc_wfr=wechat_gzh&ifr=itemdetail&state=H5WXshareOld&distributorId=1165344788&share_relation=5d4bcf182678fd8f_1165344788_1&wfr=h5direct_wxh5")
     window.open("weixin://dl/business/?t=FSmfjOH2Iws")
+  }, [isWx])
+
+  const openMiniHome = useCallback(() => {
+    window.open("weixin://dl/business/?t=OVoiLVi9kgc")
+  }, [isWx])
+
+  const webOpen = useCallback(() => {
+    window.open("weixin://dl/business/?t=PtJLn9qgJTt")
   }, [isWx])
 
   function downloadApp() {
@@ -358,15 +342,35 @@ function DownloadApp(props) {
         }}>
 
           {isWx && <img
-                  onError={(e)=>{e.target.onerror = null; e.target.src="https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/webAssets/gzhao_code.jpg"}}
-                  src={getGzgCode(queryString.parse(location.search).code)} 
-                  width={100} 
-                  height={100} />}
+            onError={(e) => { e.target.onerror = null; e.target.src = "https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/webAssets/gzhao_code.jpg" }}
+            src={getGzgCode(queryString.parse(location.search).code)}
+            width={100}
+            height={100} />}
 
           {isWx && <text style={{ marginTop: 5, color: "white" }}>长按二维码添加添加公众号</text>}
 
-          {!isWx && <text style={{ marginTop: 5, color: "white" }}>微信搜索“方泡泡”</text>}
+          {!isWx && isMobile && <text style={{ marginTop: 5, color: "white" }}>微信搜索“方泡泡”</text>}
 
+          {!isMobile && (
+            <div style={{ display: "flex", flexDirection: 'column', alignItems: "center" }}>
+              <div style={{ height: 8 }} />
+              <img
+                src={miniCode}
+                width={100}
+                height={100} />
+              <div style={{ height: 8 }} />
+              <text style={{ marginTop: 8, color: "white" }}>微信扫码添加小程序</text>
+              <div style={{ height: 8 }} />
+              <img
+                onError={(e) => { e.target.onerror = null; e.target.src = "https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/webAssets/gzhao_code.jpg" }}
+                src={getGzgCode(queryString.parse(location.search).code)}
+                width={100}
+                height={100} />
+
+              <text style={{ marginTop: 8, color: "white" }}>扫码关注公众号</text>
+            </div>
+          )
+          }
           <div style={{ height: 8 }} />
 
           {isMobile ? (<div>
@@ -402,7 +406,7 @@ function DownloadApp(props) {
             <div style={{ display: "flex", flexDirection: 'column', alignItems: 'center' }}>
               <EnterPriceQrCode
                 code={queryString.parse(location.search).code} />
-                
+
               <a style={{ marginTop: 5, color: "white", textAlign: 'center' }}>扫码添加客服微信</a>
             </div>
           }
@@ -469,7 +473,7 @@ function DownloadApp(props) {
             style={
               { maxHeight: '100%', width: "100%", display: 'block', margin: 'auto' }
             }
-            onClick={openBuy}
+            onClick={openMiniHome}
           />
 
         </div>
