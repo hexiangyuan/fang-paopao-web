@@ -152,97 +152,50 @@ export function IcpInfo(props) {
 }
 
 function EnterPriceQrCode(props) {
-  switch (props.code) {
-    case "xd0001":
-      return (
-        <img src={qxXd0001} width={100} height={100} />
-      )
-    case "xd0011":
-      return (
-        <img src={qxXd0011} width={100} height={100} />
-      )
-    case "xd0012":
-      return (
-        <img src={qxXd0012} width={100} height={100} />
-      )
-    case "xd0013":
-      return (
-        <img src={qxXd0013} width={100} height={100} />
-      )
-    case "xd0014":
-      return (
-        <img src={qxXd0014} width={100} height={100} />
-      )
-    case "xd0018":
-      return (
-        <img src={qxXd0018} width={100} height={100} />
-      )
-    case "xd0019":
-      return (
-        <img src={qxXd0019} width={100} height={100} />
-      )
-    case "xd0020":
-      return (
-        <img src={qxXd0020} width={100} height={100} />
-      )
-    case "xd0021":
-      return (
-        <img src={qxXd0021} width={100} height={100} />
-      )
-    case "xd0022":
-      return (
-        <img src={qxXd0022} width={100} height={100} />
-      )
-    case "xd0023":
-      return (
-        <img src={qxXd0023} width={100} height={100} />
-      )
-    case "xd0031":
-      return (
-        <img src={qxXd0031} width={100} height={100} />
-      )
-    case "xd0032":
-      return (
-        <img src={qxXd0032} width={100} height={100} />
-      )
-    case "xd0033":
-      return (
-        <img src={qxXd0033} width={100} height={100} />
-      )
-    default:
-      return (
-        <img src={qxXd0000} width={100} height={100} />
-      )
+  return <img src={getCustomerCode(props.code)} 
+  onError={(e)=>{e.target.onerror = null; e.target.src="https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/webAssets/xd0000.jpg"}}
+  width={100} height={100} />  
+}
+
+
+function getCustomerCode(code) {
+  if (code?.includes("xd00")) {
+    return "https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/webAssets/" + code + ".jpg"
+  } else {
+    return "https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/webAssets/xd0000.jpg"
+  }
+}
+
+function getGzgCode(code) {
+  if (code?.includes("xd00")) {
+    return "https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/webAssets/gzh-" + code + ".png"
+  } else {
+    return "https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/webAssets/gzhao_code.jpg"
   }
 }
 
 function getKeFu(code) {
   switch (code) {
-    case "xd0001":
-      return {
-        url: "https://w.1yb.co/N11MEwNeKo"
-      }
     case "xd0018":
       return {
-        url: "https://w.1yb.co/N11MER8jQj"
+        url: "weixin://dl/business/?t=OXp3nNR078a"
       }
     case "xd0019":
       return {
-        url: "https://w.1yb.co/N119QZoMK8"
+        url: "weixin://dl/business/?t=mLCq12aHyaq"
       }
     case "xd0020":
       return {
-        url: "https://w.1yb.co/N11qEGBdKP"
+        url: "weixin://dl/business/?t=znSEfFIEBHa"
       }
     case "xd0021":
       return {
-        url: "https://w.1yb.co/N11yKqyXKL"
+        url: "weixin://dl/business/?t=FJ5L7obKd3s"
       }
     default:
       return {
-        url: "https://w.1yb.co/N115Q54ZVa"
+        url: "weixin://dl/business/?t=hhrJvpGxGfq"
       }
-      break;
   }
 }
 
@@ -362,10 +315,6 @@ function DownloadApp(props) {
     window.open("weixin://dl/business/?t=FSmfjOH2Iws")
   }, [isWx])
 
-  const openMiniCustomer = useCallback(() => {
-    window.open("weixin://dl/business/?t=hhrJvpGxGfq")
-  }, [isWx, isMobile])
-
   function downloadApp() {
     // if (hasLogin) {
     window.location.href = 'https://fangpaopao-app.oss-cn-shanghai.aliyuncs.com/fangpaopao-android.apk'
@@ -408,7 +357,11 @@ function DownloadApp(props) {
           marginTop: 36
         }}>
 
-          {isWx && <img src={gzhCode} width={100} height={100} />}
+          {isWx && <img
+                  onError={(e)=>{e.target.onerror = null; e.target.src="https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/webAssets/gzhao_code.jpg"}}
+                  src={getGzgCode(queryString.parse(location.search).code)} 
+                  width={100} 
+                  height={100} />}
 
           {isWx && <text style={{ marginTop: 5, color: "white" }}>长按二维码添加添加公众号</text>}
 
@@ -427,13 +380,13 @@ function DownloadApp(props) {
             <div style={{ display: "flex", flexDirection: 'column', alignItems: 'center', width: '100%' }}>
               <a
                 style={{ marginTop: 5, color: "white", textAlign: 'center' }}
-                href={isWx ? null : "weixin://dl/business/?t=hhrJvpGxGfq"}>联系客服查看图片
+                href={isWx ? null : getKeFu(queryString.parse(location.search).code).url}>联系客服查看图片
               </a>
             </div>
 
             <div class="animate__animated animate__pulse animate__infinite">
               <a
-                href={isWx ? null : "weixin://dl/business/?t=hhrJvpGxGfq"}
+                href={isWx ? null : getKeFu(queryString.parse(location.search).code).url}
                 style={{
                   textAlign: 'center',
                   color: "white",
@@ -449,6 +402,7 @@ function DownloadApp(props) {
             <div style={{ display: "flex", flexDirection: 'column', alignItems: 'center' }}>
               <EnterPriceQrCode
                 code={queryString.parse(location.search).code} />
+                
               <a style={{ marginTop: 5, color: "white", textAlign: 'center' }}>扫码添加客服微信</a>
             </div>
           }
