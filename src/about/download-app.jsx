@@ -4,19 +4,29 @@ import { useLocation } from 'react-router-dom'
 import { useEffect, useState, useCallback, useRef } from 'react'
 
 import queryString from 'query-string'
+import wxSearch from '../assets/wx_search_tips.jpg'
 import wxBg from '../assets/wx-tips.png'
 import appStoreDownload from '../assets/apple-store-download.png'
 import miniCode from '../assets/mini_program_code.jpg'
 
 import 'animate.css';
 
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Modal from 'react-modal';
 
-
-// Import Swiper styles
-import 'swiper/swiper.scss';
 import './AboutUs.css'
-import { Alert } from 'antd'
 
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+  },
+};
 
 const loginPath = '/api/login/mobile'
 
@@ -171,7 +181,7 @@ function getKeFu(code) {
       }
     default:
       return {
-        url: "weixin://dl/business/?t=hhrJvpGxGfq"
+        url: "weixin://dl/business/?t=PtJLn9qgJTt"
       }
   }
 }
@@ -212,6 +222,16 @@ function Body(props) {
 
 function DownloadApp(props) {
   const location = useLocation()
+
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
 
   const [isWx, setIsWx] = useState(false)
   const [username, setUsername] = useState('')
@@ -288,15 +308,11 @@ function DownloadApp(props) {
   }, [])
 
   const openBuy = useCallback(() => {
-    window.open("weixin://dl/business/?t=FSmfjOH2Iws")
-  }, [isWx])
+    isMobile && window.open("weixin://dl/business/?t=FSmfjOH2Iws")
+  }, [isWx, isMobile])
 
   const openMiniHome = useCallback(() => {
     window.open("weixin://dl/business/?t=OVoiLVi9kgc")
-  }, [isWx])
-
-  const webOpen = useCallback(() => {
-    window.open("weixin://dl/business/?t=PtJLn9qgJTt")
   }, [isWx])
 
   function downloadApp() {
@@ -305,10 +321,6 @@ function DownloadApp(props) {
     // } else {
     // login()
     // }
-  }
-
-  function getCode() {
-    fetchCode()
   }
 
   const swiper1 = <div style={{
@@ -353,7 +365,7 @@ function DownloadApp(props) {
             <img
               src={wxSearch}
               width={"80%"}
-             />
+            />
           }
 
           {!isMobile && (
@@ -478,7 +490,7 @@ function DownloadApp(props) {
             style={
               { maxHeight: '100%', width: "100%", display: 'block', margin: 'auto' }
             }
-            onClick={openMiniHome}
+            onClick={openBuy}
           />
 
         </div>
@@ -489,10 +501,27 @@ function DownloadApp(props) {
 
   return (
     <div style={{ width: "100vw", overflowY: "scroll", backgroundColor: '#282c34' }} >
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      ><div style={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center'
+      }}>
+          <img
+            src={miniCode}
+            width={200}
+            height={200} />
+          <div style={{ height: 8 }} />
+          <text style={{ marginTop: 8, color: "black" }}>微信扫码添加小程序</text>
+        </div>
+      </Modal>
       {swiper1}
       <IcpInfo />
-
-
       <div style={{
         position: "fixed",
         display: 'flex',
@@ -503,7 +532,7 @@ function DownloadApp(props) {
         justifyContent: 'center', alignContent: 'center',
 
       }}
-        onClick={openBuy}
+        onClick={isMobile ? openMiniHome : openModal}
       >
         <a style={{
           color: 'white',

@@ -29,15 +29,17 @@ import qxXd0023 from "../assets/xd0023.jpeg";
 import qxXd0031 from "../assets/xd0031.jpg";
 import qxXd0032 from "../assets/xd0032.jpg";
 import qxXd0033 from "../assets/xd0033.jpg";
-import { Swiper, SwiperSlide } from 'swiper/react';
+// import { Swiper, SwiperSlide } from 'swiper/react';yarn 
 
 import 'animate.css';
 
 
 
 // Import Swiper styles
-import 'swiper/swiper.scss';
+// import 'swiper/swiper.scss';
 import './AboutUs.css'
+
+
 
 
 const loginPath = '/test/login/mobile'
