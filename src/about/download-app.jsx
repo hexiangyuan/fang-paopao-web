@@ -349,7 +349,12 @@ function DownloadApp(props) {
 
           {isWx && <text style={{ marginTop: 5, color: "white" }}>长按二维码添加添加公众号</text>}
 
-          {!isWx && isMobile && <text style={{ marginTop: 5, color: "white" }}>微信搜索“方泡泡”</text>}
+          {!isWx && isMobile &&
+            <img
+              src={wxSearch}
+              width={"80%"}
+             />
+          }
 
           {!isMobile && (
             <div style={{ display: "flex", flexDirection: 'column', alignItems: "center" }}>
