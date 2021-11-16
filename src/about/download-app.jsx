@@ -24,6 +24,7 @@ const customStyles = {
     right: 'auto',
     bottom: 'auto',
     marginRight: '-50%',
+    width: '80%',
     transform: 'translate(-50%, -50%)',
   },
 };
@@ -129,7 +130,6 @@ export function IcpInfo(props) {
       alignItems: 'center',
       width: '100%',
       marginTop: 48,
-      paddingBottom: 12 + 60,
     }}
     >
       <text style={{ color: 'white', fontSize: 12 }}>上海方和信息技术有限公司</text>
@@ -225,12 +225,18 @@ function DownloadApp(props) {
 
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
+  const [aboutUseIsOpen, setAboutUseIsOpen] = React.useState(false);
+
   function openModal() {
     setIsOpen(true);
   }
 
   function closeModal() {
     setIsOpen(false);
+  }
+
+  function closeAboutUsModal() {
+    setAboutUseIsOpen(false);
   }
 
   const [isWx, setIsWx] = useState(false)
@@ -505,7 +511,7 @@ function DownloadApp(props) {
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         style={customStyles}
-        contentLabel="Example Modal"
+        contentLabel="扫码"
       ><div style={{
         display: 'flex',
         flexDirection: 'column',
@@ -520,8 +526,44 @@ function DownloadApp(props) {
           <text style={{ marginTop: 8, color: "black" }}>微信扫码添加小程序</text>
         </div>
       </Modal>
+      <Modal
+        isOpen={aboutUseIsOpen}
+        onRequestClose={closeAboutUsModal}
+        style={customStyles}
+        contentLabel="关于我们"
+      ><div style={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center'
+      }}>
+          <img
+            src={app_icon}
+            width={200}
+            height={200} />
+          <div style={{ height: 8 }} />
+          <text style={{ marginTop: 8, color: "black", textAlign: 'center' }}>
+            方泡泡专注于用技术提升情趣用品的用户体验，为用户提供不一样的情趣体验
+          </text>
+          <text style={{ marginTop: 8, color: "black", textAlign: 'center' }}>联系我们：微信关注方泡泡公众号
+          </text>
+          <text style={{ marginTop: 8, color: "black", textAlign: 'center' }}>联系电话：175-2136-8841
+          </text>
+          <text style={{ marginTop: 8, color: "black", textAlign: 'center' }}>联系地址：上海市闵行区顾戴路3009号402室
+          </text>
+          <text style={{ marginTop: 8, color: "black", textAlign: 'center' }}>加入我们：qu.pao@outlook.com
+          </text>
+        </div>
+      </Modal>
       {swiper1}
       <IcpInfo />
+      <div
+        onClick={() => { setAboutUseIsOpen(true) }}
+        style={{ paddingBottom: 12 + 48, marginTop: 12, justifyContent: 'center', display: 'flex', alignItems: 'center', width: "100%ßß" }}>
+        <text style={{ color: 'white', fontSize: 14, textAlign: 'center' }}>关于我们 | 联系我们 | 加入我们</text>
+      </div>
+
+
       <div style={{
         position: "fixed",
         display: 'flex',
