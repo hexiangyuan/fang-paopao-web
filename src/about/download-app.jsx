@@ -543,7 +543,7 @@ function DownloadApp(props) {
             height={200} />
           <div style={{ height: 8 }} />
           <text style={{ marginTop: 8, color: "black", textAlign: 'center' }}>
-            方泡泡专注于用技术提升情趣用品的用户体验，为用户提供不一样的情趣体验
+          方泡泡专注于用技术提升情趣用品的用户体验，为用户提供不一样的情趣体验，经营产品包括实体娃娃、倒模、飞机杯、跳蛋等
           </text>
           <text style={{ marginTop: 8, color: "black", textAlign: 'center' }}>联系我们：微信关注方泡泡公众号
           </text>
