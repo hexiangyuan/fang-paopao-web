@@ -128,11 +128,9 @@ export function IcpInfo(props) {
       flexDirection: 'column',
       display: 'flex',
       alignItems: 'center',
-      width: '100%',
-      marginTop: 48,
+      width: '100%'
     }}
     >
-      <text style={{ color: 'white', fontSize: 12 }}>上海方和信息技术有限公司</text>
       <a href="https://beian.miit.gov.cn/" target="_blank" style={{ color: 'white', fontSize: 12 }}>沪ICP备2021010013号</a>
     </div>
   )
@@ -542,8 +540,10 @@ function DownloadApp(props) {
             width={200}
             height={200} />
           <div style={{ height: 8 }} />
+          <text style={{ marginTop: 8, color: "black", textAlign: 'center' }}>上海方和信息技术有限公司
+          </text>
           <text style={{ marginTop: 8, color: "black", textAlign: 'center' }}>
-          方泡泡专注于用技术提升情趣用品的用户体验，为用户提供不一样的情趣体验，经营产品包括实体娃娃、倒模、飞机杯、跳蛋等
+            方泡泡专注于用技术提升情趣用品的用户体验，为用户提供不一样的情趣体验，经营产品包括实体娃娃、倒模、飞机杯、跳蛋等
           </text>
           <text style={{ marginTop: 8, color: "black", textAlign: 'center' }}>联系我们：微信关注方泡泡公众号
           </text>
@@ -556,13 +556,16 @@ function DownloadApp(props) {
         </div>
       </Modal>
       {swiper1}
-      <IcpInfo />
+      <div style={{ height: 48, }}></div>
       <div
         onClick={() => { setAboutUseIsOpen(true) }}
-        style={{ paddingBottom: 12 + 48, marginTop: 12, justifyContent: 'center', display: 'flex', alignItems: 'center', width: "100%ßß" }}>
+        style={{ marginTop: 12, justifyContent: 'center', display: 'flex', alignItems: 'center', width: "100%ßß" }}>
         <text style={{ color: 'white', fontSize: 14, textAlign: 'center' }}>关于我们 | 联系我们 | 加入我们</text>
       </div>
-
+      <div style={{ height: 12 }}></div>
+      <IcpInfo />
+      <div style={{ height: 12 + 48, }}></div>
+     
 
       <div style={{
         position: "fixed",
