@@ -159,6 +159,7 @@ function getGzgCode(code) {
   }
 }
 
+
 function getKeFu(code) {
   switch (code) {
     case "xd0018":
@@ -176,6 +177,10 @@ function getKeFu(code) {
     case "xd0021":
       return {
         url: "weixin://dl/business/?t=FJ5L7obKd3s"
+      }
+    case "xd0040":
+      return {
+        url: "weixin://dl/business/?t=L1thadqDedr"
       }
     default:
       return {
@@ -249,6 +254,8 @@ function DownloadApp(props) {
   const [iframeScrolled, setIframScrlled] = useState(false)
   const [scrollString, setScrollString] = useState("")
 
+  const [miniProgramKeFuSchema, setMiniProgramKeFuSchema] = useState("")
+
   const contentRef = useRef(null);
 
   const fetchCode = useCallback(() => {
@@ -301,6 +308,22 @@ function DownloadApp(props) {
     }
     return () => clearInterval(interval)
   }, [timing])
+
+  useEffect(() => {
+    var requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+
+    fetch("/alioss-raw/www-config/weixin-mini-program-schema.json", requestOptions)
+      .then(response => response.json())
+      .then(result => result.hasOwnProperty(queryString.parse(location.search).code) ? result[queryString.parse(location.search).code] : result["default"])
+      .then(url => {
+        console.log(url)
+        setMiniProgramKeFuSchema(url)
+      })
+      .catch(error => console.log('error', error));
+  }, [queryString])
 
   useEffect(() => {
     const isWeiXin = navigator.userAgent.toLowerCase().indexOf('micromessenger') > -1
@@ -363,7 +386,7 @@ function DownloadApp(props) {
             width={100}
             height={100} />}
 
-          {isWx && <text style={{ marginTop: 5, color: "white" }}>长按二维码添加添加公众号</text>}
+          {isWx && <text style={{ marginTop: 5, color: "white" }}>长按二维码关注公众号</text>}
 
           {!isWx && isMobile &&
             <img
@@ -405,13 +428,13 @@ function DownloadApp(props) {
             <div style={{ display: "flex", flexDirection: 'column', alignItems: 'center', width: '100%' }}>
               <a
                 style={{ marginTop: 5, color: "white", textAlign: 'center' }}
-                href={isWx ? null : getKeFu(queryString.parse(location.search).code).url}>联系客服查看图片
+                href={isWx ? null : miniProgramKeFuSchema}>联系客服查看图片
               </a>
             </div>
 
             <div class="animate__animated animate__pulse animate__infinite">
               <a
-                href={isWx ? null : getKeFu(queryString.parse(location.search).code).url}
+                href={isWx ? null : miniProgramKeFuSchema}
                 style={{
                   textAlign: 'center',
                   color: "white",
@@ -565,7 +588,7 @@ function DownloadApp(props) {
       <div style={{ height: 12 }}></div>
       <IcpInfo />
       <div style={{ height: 12 + 48, }}></div>
-     
+
 
       <div style={{
         position: "fixed",
