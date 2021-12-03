@@ -253,6 +253,7 @@ function DownloadApp(props) {
   const [inputFocus, setInputFocus] = useState(false)
   const [iframeScrolled, setIframScrlled] = useState(false)
   const [scrollString, setScrollString] = useState("")
+  const [isBaiduChannel, setIsBaiduChannel] = useState(false)
 
   const [miniProgramKeFuSchema, setMiniProgramKeFuSchema] = useState("")
 
@@ -324,6 +325,10 @@ function DownloadApp(props) {
       })
       .catch(error => console.log('error', error));
   }, [queryString])
+
+  useEffect(()=>{
+    setIsBaiduChannel("xd0009" == queryString.parse(location.search).code)
+  },[queryString])
 
   useEffect(() => {
     const isWeiXin = navigator.userAgent.toLowerCase().indexOf('micromessenger') > -1
@@ -465,14 +470,14 @@ function DownloadApp(props) {
             display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '8pt',
           }}
           >
-            {isIOS ? (<a href='https://apps.apple.com/cn/app/%E6%96%B9%E6%B3%A1%E6%B3%A1/id1560592820' >
+           {!isBaiduChannel && (isIOS ? (<a href='https://apps.apple.com/cn/app/%E6%96%B9%E6%B3%A1%E6%B3%A1/id1560592820' >
               <img src={appStoreDownload} />
             </a>) : (<button
               className="App-download"
               onClick={downloadApp}
               type="submit"
             > {"   直接下载APP    "}
-            </button>)}
+            </button>))}
 
 
             <div style={{ height: "16pt" }} />
