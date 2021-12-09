@@ -271,6 +271,11 @@ function DownloadApp(props) {
     }
   }, [username])
 
+  function getCode() {
+    fetchCode()
+  }
+
+
   const downloadEnable = useCallback(() => username.length === 11 && captcha.length === 4, [username, captcha])
 
   const login = useCallback(() => {
@@ -283,9 +288,10 @@ function DownloadApp(props) {
     }).then((data) => {
       if (data.code === 200) {
         setHasLogin(true)
-        if (!isIOS) {
-          window.location.href = 'https://fanghe.oss-cn-beijing.aliyuncs.com/fangpaopao-android.f10a701e.apk'
-        }
+        // if (!isIOS) {
+        //   // window.location.href = 'https://fanghe.oss-cn-beijing.aliyuncs.com/fangpaopao-android.f10a701e.apk'
+        // }
+        alert('你好,尊敬的方泡泡用户,欢迎注册。')
       } else {
         alert('验证码验证失败，请重新获取再试。')
       }
@@ -326,9 +332,9 @@ function DownloadApp(props) {
       .catch(error => console.log('error', error));
   }, [queryString])
 
-  useEffect(()=>{
+  useEffect(() => {
     setIsBaiduChannel("xd0009" == queryString.parse(location.search).code)
-  },[queryString])
+  }, [queryString])
 
   useEffect(() => {
     const isWeiXin = navigator.userAgent.toLowerCase().indexOf('micromessenger') > -1
@@ -348,11 +354,7 @@ function DownloadApp(props) {
   }, [isWx])
 
   function downloadApp() {
-    // if (hasLogin) {
-    window.location.href = 'https://fangpaopao-app.oss-cn-shanghai.aliyuncs.com/fangpaopao-android.apk'
-    // } else {
-    // login()
-    // }
+    login()
   }
 
   const swiper1 = <div style={{
@@ -418,8 +420,8 @@ function DownloadApp(props) {
 
               <text style={{ marginTop: 8, color: "white" }}>扫码关注公众号</text>
             </div>
-          )
-          }
+          )}
+
           <div style={{ height: 8 }} />
 
           {isMobile ? (<div>
@@ -470,18 +472,90 @@ function DownloadApp(props) {
             display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '8pt',
           }}
           >
-           {!isBaiduChannel && (isIOS ? (<a href='https://apps.apple.com/cn/app/%E6%96%B9%E6%B3%A1%E6%B3%A1/id1560592820' >
+            {!isBaiduChannel ? (isIOS ? (<a href='https://apps.apple.com/cn/app/%E6%96%B9%E6%B3%A1%E6%B3%A1/id1560592820' >
               <img src={appStoreDownload} />
             </a>) : (<button
               className="App-download"
               onClick={downloadApp}
               type="submit"
             > {"   直接下载APP    "}
-            </button>))}
+            </button>)) : (
+              <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=3251162009&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:3251162009:51" alt="点击联系客服查看产品细节图片" title="点击联系客服查看产品细节图片" /></a>)}
 
 
             <div style={{ height: "16pt" }} />
           </div>
+
+          {isBaiduChannel && (
+            <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+              <input
+                className="input-mobile"
+                type="tel"
+                style={{marginLeft:16,marginRight:16}}
+                maxLength={11}
+                placeholder="请输入手机号"
+                value={username}
+                onFocus={() => {
+                  setInputFocus(true)
+                }}
+                onChange={(e) => {
+                  setUsername(e.target.value)
+                }}
+              />
+
+              <div style={{
+                display: 'flex',
+                flexDirection: 'row',
+                marginTop: '16pt',
+                marginLeft: 16,
+                 marginRight: 16,
+                flex: 1
+              }}
+              >
+                <input
+                  className="input-verification"
+                  placeholder="请输入验证码"
+                  style={{ flex: 1 }}
+                  value={captcha}
+                  onChange={(e) => {
+                    setCaptcha(e.target.value)
+                  }}
+                />
+
+                <div
+                  className="btn-get-code"
+                  style={{
+                    minWidth: 64,
+                    marginLeft: 16,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: "white"
+                  }}
+                  disabled={timing}
+                  onClick={getCode}
+                >
+                  {timing ? `${count / 1000} S` : '验证码'}
+                </div>
+
+              </div>
+
+              <button
+                className="App-download"
+                style={{
+                  margin: 16,
+                
+                }}
+                onClick={downloadApp}
+                disabled={!downloadEnable()}
+                type="submit"
+              >登录
+              </button>
+
+              <div style={{height:16}}/>
+
+            </div>
+          )}
 
 
           <img src={"https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/webAssets/%E8%AF%A6%E6%83%850711_08.jpg?x-oss-process=image/resize,h_800,m_lfit"}

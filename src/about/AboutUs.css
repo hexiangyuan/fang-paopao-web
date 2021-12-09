@@ -52,28 +52,22 @@
     border-color: #FF117E;
     border-radius: 4px;
     padding: 12px;
-    margin-left: 10vw;
-    margin-right: 10vw;
 }
 
 .input-verification{
     border-width: 1px;
-    flex:1;
     border-color: #FF117E;
     border-radius: 4px;
-    margin-right: 10%;
     padding: 12px;
 }
 
 .btn-get-code{
     background-image: linear-gradient(to right, #FF8126 , #ff117e);
-    color: white;
     border-radius: 100px;
     border-width: 0;
-    padding: 1.5vw 2vw;
     font-size: 15px;
-    min-width: 20vw;
 }
+
 .App-download{
     background-image: linear-gradient(to right, #FF8126 , #ff117e);
     color: white;
@@ -83,9 +77,7 @@
     padding-right: 10vw;
     padding-bottom: 2vw;
     border-width: 0;
-    font-size: 15px;
-    margin-left: 10vw;
-    margin-right: 10vw;
+    width:"50%";
 }
 
 .App-download[disabled]{
