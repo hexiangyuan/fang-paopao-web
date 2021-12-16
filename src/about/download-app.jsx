@@ -491,7 +491,7 @@ function DownloadApp(props) {
               <input
                 className="input-mobile"
                 type="tel"
-                style={{marginLeft:16,marginRight:16}}
+                style={{ marginLeft: 16, marginRight: 16 }}
                 maxLength={11}
                 placeholder="请输入手机号"
                 value={username}
@@ -508,7 +508,7 @@ function DownloadApp(props) {
                 flexDirection: 'row',
                 marginTop: '16pt',
                 marginLeft: 16,
-                 marginRight: 16,
+                marginRight: 16,
                 flex: 1
               }}
               >
@@ -544,7 +544,7 @@ function DownloadApp(props) {
                 className="App-download"
                 style={{
                   margin: 16,
-                
+
                 }}
                 onClick={downloadApp}
                 disabled={!downloadEnable()}
@@ -552,7 +552,7 @@ function DownloadApp(props) {
               >登录
               </button>
 
-              <div style={{height:16}}/>
+              <div style={{ height: 16 }} />
 
             </div>
           )}
@@ -579,24 +579,25 @@ function DownloadApp(props) {
             onClick={openBuy}
           />
 
-          <img src={"https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/webAssets/02-1_02.jpg?x-oss-process=image/resize,h_800,m_lfit"}
+          {!isBaiduChannel && (<img src={"https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/webAssets/02-1_02.jpg?x-oss-process=image/resize,h_800,m_lfit"}
             style={
               { maxHeight: '100%', width: "100%", display: 'block', margin: 'auto' }
             }
             onClick={openBuy}
-          />
+          />)}
 
-          <img src={"https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/webAssets/%E8%AF%A6%E6%83%850815-2_07.jpg?x-oss-process=image/resize,h_800,m_lfit"}
+          {!isBaiduChannel && (<img src={"https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/webAssets/%E8%AF%A6%E6%83%850815-2_07.jpg?x-oss-process=image/resize,h_800,m_lfit"}
             style={
               { maxHeight: '100%', width: "100%", display: 'block', margin: 'auto' }
             }
             onClick={openBuy}
-          />
-          <img src={"https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/webAssets/%E8%AF%A6%E6%83%850610-%E6%8B%B7%E8%B4%9D_01.jpg?x-oss-process=image/resize,h_800,m_lfit"}
-            style={
-              { maxHeight: '100%', width: "100%", display: 'block', margin: 'auto' }
-            }
-            onClick={openBuy}
+          />)}
+          
+            < img src={"https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/webAssets/%E8%AF%A6%E6%83%850610-%E6%8B%B7%E8%B4%9D_01.jpg?x-oss-process=image/resize,h_800,m_lfit"}
+          style={
+            { maxHeight: '100%', width: "100%", display: 'block', margin: 'auto' }
+          }
+          onClick={openBuy}
           />
 
         </div>
@@ -642,7 +643,7 @@ function DownloadApp(props) {
             width={200}
             height={200} />
           <div style={{ height: 8 }} />
-          <text style={{ marginTop: 8, color: "black", textAlign: 'center' }}>上海方和信息技术有限公司
+          <text style={{ marginTop: 8, color: "black", textAlign: 'center' }}>东莞市方何信息技术有限公司
           </text>
           <text style={{ marginTop: 8, color: "black", textAlign: 'center' }}>
             方泡泡专注于用技术提升情趣用品的用户体验，为用户提供不一样的情趣体验，经营产品包括实体娃娃、倒模、飞机杯、跳蛋等
@@ -651,7 +652,9 @@ function DownloadApp(props) {
           </text>
           <text style={{ marginTop: 8, color: "black", textAlign: 'center' }}>联系电话：175-2136-8841
           </text>
-          <text style={{ marginTop: 8, color: "black", textAlign: 'center' }}>联系地址：上海市闵行区顾戴路3009号402室
+          <text style={{ marginTop: 8, color: "black", textAlign: 'center' }}>总部：[广东][东莞]东莞市东城街道鸿福东路二号农商银行大厦商务中心十一楼
+          </text>
+          <text style={{ marginTop: 8, color: "black", textAlign: 'center' }}>上海门店：上海市闵行区顾戴路3009号402;上海市闵行区莘庄镇莘朱路270弄33号-1
           </text>
           <text style={{ marginTop: 8, color: "black", textAlign: 'center' }}>加入我们：qu.pao@outlook.com
           </text>
