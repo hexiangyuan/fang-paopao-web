@@ -557,49 +557,77 @@ function DownloadApp(props) {
             </div>
           )}
 
+          {isBaiduChannel ? (<div>
+            <img src={"https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/image/safe/%E8%AF%A6%E6%83%850610-%E6%8B%B7%E8%B4%9D_04.jpg?x-oss-process=image/resize,h_800,m_lfit"}
+              style={
+                { maxHeight: '100%', width: "100%", display: 'block', margin: 'auto' }
+              }
+              onClick={openBuy}
+            />
 
-          {!isBaiduChannel && (<img src={"https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/webAssets/%E8%AF%A6%E6%83%850711_08.jpg?x-oss-process=image/resize,h_800,m_lfit"}
-            style={
-              { maxHeight: '100%', width: "100%", display: 'block', margin: 'auto' }
-            }
-            onClick={openBuy}
-          />)}
+            <img src={"https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/image/safe/%E8%AF%A6%E6%83%850610-%E6%8B%B7%E8%B4%9D_06.jpg?x-oss-process=image/resize,h_800,m_lfit"}
+              style={
+                { maxHeight: '100%', width: "100%", display: 'block', margin: 'auto' }
+              }
+              onClick={openBuy}
+            />
+            <img src={"https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/image/safe/%E8%AF%A6%E6%83%850626_08.jpg?x-oss-process=image/resize,h_800,m_lfit"}
+              style={
+                { maxHeight: '100%', width: "100%", display: 'block', margin: 'auto' }
+              }
+              onClick={openBuy}
+            />
+            <img src={"https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/image/safe/%E8%AF%A6%E6%83%850626_10.jpg?x-oss-process=image/resize,h_800,m_lfit"}
+              style={
+                { maxHeight: '100%', width: "100%", display: 'block', margin: 'auto' }
+              }
+              onClick={openBuy}
+            />
 
-          <img src={"https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/webAssets/详情0711_02.jpg?x-oss-process=image/resize,h_800,m_lfit"}
-            style={
-              { maxHeight: '100%', width: "100%", display: 'block', margin: 'auto' }
-            }
-            onClick={openBuy}
-          />
 
-          <img src={"https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/webAssets/%E8%AF%A6%E6%83%850626_04.jpg?x-oss-process=image/resize,h_800,m_lfit"}
-            style={
-              { maxHeight: '100%', width: "100%", display: 'block', margin: 'auto' }
-            }
-            onClick={openBuy}
-          />
+          </div>) : (<div>
+            <img src={"https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/webAssets/%E8%AF%A6%E6%83%850711_08.jpg?x-oss-process=image/resize,h_800,m_lfit"}
+              style={
+                { maxHeight: '100%', width: "100%", display: 'block', margin: 'auto' }
+              }
+              onClick={openBuy}
+            />
 
-          {!isBaiduChannel && (<img src={"https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/webAssets/02-1_02.jpg?x-oss-process=image/resize,h_800,m_lfit"}
-            style={
-              { maxHeight: '100%', width: "100%", display: 'block', margin: 'auto' }
-            }
-            onClick={openBuy}
-          />)}
+            <img src={"https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/webAssets/详情0711_02.jpg?x-oss-process=image/resize,h_800,m_lfit"}
+              style={
+                { maxHeight: '100%', width: "100%", display: 'block', margin: 'auto' }
+              }
+              onClick={openBuy}
+            />
 
-          {!isBaiduChannel && (<img src={"https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/webAssets/%E8%AF%A6%E6%83%850815-2_07.jpg?x-oss-process=image/resize,h_800,m_lfit"}
-            style={
-              { maxHeight: '100%', width: "100%", display: 'block', margin: 'auto' }
-            }
-            onClick={openBuy}
-          />)}
+            <img src={"https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/webAssets/%E8%AF%A6%E6%83%850626_04.jpg?x-oss-process=image/resize,h_800,m_lfit"}
+              style={
+                { maxHeight: '100%', width: "100%", display: 'block', margin: 'auto' }
+              }
+              onClick={openBuy}
+            />
 
-          < img src={"https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/webAssets/%E8%AF%A6%E6%83%850610-%E6%8B%B7%E8%B4%9D_01.jpg?x-oss-process=image/resize,h_800,m_lfit"}
-            style={
-              { maxHeight: '100%', width: "100%", display: 'block', margin: 'auto' }
-            }
-            onClick={openBuy}
-          />
+            <img src={"https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/webAssets/02-1_02.jpg?x-oss-process=image/resize,h_800,m_lfit"}
+              style={
+                { maxHeight: '100%', width: "100%", display: 'block', margin: 'auto' }
+              }
+              onClick={openBuy}
+            />
 
+            <img src={"https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/webAssets/%E8%AF%A6%E6%83%850815-2_07.jpg?x-oss-process=image/resize,h_800,m_lfit"}
+              style={
+                { maxHeight: '100%', width: "100%", display: 'block', margin: 'auto' }
+              }
+              onClick={openBuy}
+            />
+
+            < img src={"https://fangpaopao-pic.oss-cn-shanghai.aliyuncs.com/webAssets/%E8%AF%A6%E6%83%850610-%E6%8B%B7%E8%B4%9D_01.jpg?x-oss-process=image/resize,h_800,m_lfit"}
+              style={
+                { maxHeight: '100%', width: "100%", display: 'block', margin: 'auto' }
+              }
+              onClick={openBuy}
+            />
+          </div>)}
         </div>
       </div>
     </div>
